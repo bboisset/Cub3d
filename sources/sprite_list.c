@@ -1,11 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sprite_list.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/02 15:38:09 by bboisset          #+#    #+#             */
+/*   Updated: 2020/08/02 15:38:11 by bboisset         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
-
-//typedef struct			s_sprite_list
-//{
-//	t_dimension				dimension;
-//	struct s_sprite_list	*next;
-//}							t_sprite_list;
-
 
 t_sprite_list	*ft_sprt_lst_nw(int x, int y)
 {

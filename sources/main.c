@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptisteboisset <marvin@42.fr>             +#+  +:+       +#+        */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:56:04 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/01/24 17:56:12 by baptisteb        ###   ########.fr       */
+/*   Updated: 2020/08/02 15:33:06 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "header.h"
 
 int read_argument(const char *argument, t_map_config *config)

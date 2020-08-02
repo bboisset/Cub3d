@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptisteboisset <marvin@42.fr>             +#+  +:+       +#+        */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/01/24 17:53:30 by baptisteb        ###   ########.fr       */
+/*   Updated: 2020/08/02 15:37:05 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #define rotSpeed 0.12
 #define	SCREEN_MAX_W 2560
 #define SCREEN_MAX_H 1440
+#define PI 3.1415926535
 #define D_CONFIG display_config->config
 #define D_CAM display_config->camera
 #define D_DATA display_config->data

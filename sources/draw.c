@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptisteboisset <marvin@42.fr>             +#+  +:+       +#+        */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:48:51 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/01/24 17:48:58 by baptisteb        ###   ########.fr       */
+/*   Updated: 2020/08/02 15:36:58 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "header.h"
-#define PI 3.1415926535
 
 t_img_data get_text_by_oritentation(t_map_config *config)
 {

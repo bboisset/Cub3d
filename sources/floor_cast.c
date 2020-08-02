@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   floor_cast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptisteboisset <marvin@42.fr>             +#+  +:+       +#+        */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:49:09 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/01/24 17:49:21 by baptisteb        ###   ########.fr       */
+/*   Updated: 2020/08/02 15:37:18 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "header.h"
 
 int floor_sky_cast(t_map_config *config, t_display *camera,t_data *data)

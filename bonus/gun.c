@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   gun.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptisteboisset <marvin@42.fr>             +#+  +:+       +#+        */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:49:38 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/01/24 17:50:27 by baptisteb        ###   ########.fr       */
+/*   Updated: 2020/08/02 15:38:47 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../sources/header.h"
 
 void sprite_in_front_loop(t_display_config *display_config)

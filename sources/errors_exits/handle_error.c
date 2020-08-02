@@ -1,10 +1,15 @@
-//
-//  handle_error.c
-//  Cube3d
-//
-//  Created by Boisset on 18/01/2020.
-//  Copyright © 2020 Boisset. All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_error.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/02 15:35:56 by bboisset          #+#    #+#             */
+/*   Updated: 2020/08/02 15:35:57 by bboisset         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../header.h"
 
 int main_error(int code)

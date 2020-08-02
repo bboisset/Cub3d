@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   sprite.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptisteboisset <marvin@42.fr>             +#+  +:+       +#+        */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:36:42 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/01/24 17:58:09 by baptisteb        ###   ########.fr       */
+/*   Updated: 2020/08/02 15:38:00 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "header.h"
 # define SCALE_SPRITE 1
 # define VMOVE 64
