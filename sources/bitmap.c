@@ -1,0 +1,79 @@
+
+#include "header.h"
+
+static void	put_int_to_char(unsigned char *start, int value)
+{
+	start[0] = (unsigned char)(value);
+	start[1] = (unsigned char)(value >> 8);
+	start[2] = (unsigned char)(value >> 16);
+	start[3] = (unsigned char)(value >> 24);
+}
+
+static int	get_color(int x, int y, t_img_data *data)
+{
+	int color;
+
+	color = *(int *)(data->data_img + ( 4 * (int)data->dimension.x * ((int)data->dimension.y - 1 - y) + (4 * x)));
+	return (color);
+}
+
+static int	write_data(t_img_data *data, int fd)
+{
+	int	y;
+	int x;
+	int	color;
+	
+	y = 0;
+	while (y < data->dimension.y)
+	{
+		x = 0;
+		while (x < data->dimension.x)
+		{
+			color = get_color(x, y, data);
+			if (write(fd, &color, 3) < 0)
+				return (-1);
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
+static int	bitmap_header(int file_size, int fd, t_img_data *data)
+{
+	int				i;
+	int				tmp;
+	unsigned char	bmp_file_header[54];
+	
+	i = 0;
+	while (i < 54)
+		bmp_file_header[i++] = (unsigned char)0;
+	bmp_file_header[0] = (unsigned char)'B';
+	bmp_file_header[1] = (unsigned char)'M';
+	put_int_to_char(bmp_file_header + 2, file_size);
+	bmp_file_header[10] = (unsigned char)54;
+	bmp_file_header[14] = (unsigned char)40;
+	tmp = data->dimension.x;
+	put_int_to_char(bmp_file_header + 18, tmp);
+	tmp = data->dimension.y;
+	put_int_to_char(bmp_file_header + 22, tmp);
+	bmp_file_header[26] = (unsigned char)1;
+	bmp_file_header[28] = (unsigned char)24;
+	return (!(write(fd, bmp_file_header, 54) < 0));
+}
+
+int			create_bitmap(t_map_config *config, t_img_data *data)
+{
+	int	fd;
+	int	file_size;
+
+	if ((fd = open("/tmp/bitmap.bmp", O_CREAT | O_RDWR)) < 0)
+		return (-11);
+	data->dimension.x = config->resolution.x;
+	data->dimension.y = config->resolution.y;
+	file_size = 54 + (config->resolution.x * config->resolution.y) * 4;
+	bitmap_header(file_size, fd, data);
+	write_data(data, fd);
+	close(fd);
+	return (0);
+}

@@ -1,0 +1,66 @@
+//
+//  exit.c
+//  Cube3d
+//
+//  Created by Boisset on 27/01/2020.
+//  Copyright © 2020 Boisset. All rights reserved.
+//
+
+#include "../header.h"
+
+void free_config(t_map_config *config)
+{
+	int i;
+	
+	i = 0;
+	free_textures(config);
+	free_sprites(&config->sprt_lst);
+	if (config->step > 1)
+	{
+		if (config->step > 2)
+			while (i < config->map_width.x)
+				free(config->map[i++]);
+		free(config->map);
+		if (config->step > 3)
+			free(config->ZBuffer);
+	}
+	free(config);
+}
+
+void free_gun(t_gun	*gun)
+{
+	free(gun->img->data_img);
+	free(gun->img->temp);
+	free(gun->img);
+	free(gun);
+}
+
+void free_minimap(t_minimap *minimap, int type)
+{
+	if (type > 0)
+	{
+		free(minimap->player_icon->temp);
+		free(minimap->player_icon->data_img);
+		free(minimap->player_icon);
+	}
+	free(minimap->data->temp);
+	free(minimap->data->data_img);
+	free(minimap->data);
+	free(minimap);
+}
+
+int exit_pr(t_display_config *display_config)
+{
+	free(D_CAM);
+	free_config(D_CONFIG);
+		mlx_destroy_window(D_DATA->mlx_ptr, D_DATA->mlx_win);
+		free(D_DATA->mlx_ptr);
+		free(D_DATA->mlx_img);
+		free(D_DATA->data->data_img);
+		free(D_DATA->data);
+	free(D_DATA);
+	free_minimap(MINIMAP, 1);
+	free_gun(GUN);
+	return (0);
+}
+
