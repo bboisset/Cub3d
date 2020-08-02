@@ -1,0 +1,23 @@
+       R 600 600
+             NO ./ressources/imgs/north.xpm
+                SO ./ressources/imgs/south.xpm
+WE ./ressources/imgs/west.xpm
+
+                     EA ./ressources/imgs/east.xpm
+S ./ressources/imgs/barrel.xpm
+
+
+             F 62,198,247
+
+
+C 214,145,114
+111111
+100101
+1020    01
+1100N1
+1000001              11111111
+1000000      00000001
+100000      000000001
+100001111111111
+100  0011
+1111111

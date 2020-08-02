@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:38 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 22:20:56 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 23:06:19 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,8 @@ int read_file(int fd, t_map_config *config)
 		if (res == -1)
 			return (-1);
 	}
+	if (fd_status == 0)
+		config->step = 0;
 	if (fd_status == -1 || config->player_count == 0)
 		return (-1);
 	return (0);

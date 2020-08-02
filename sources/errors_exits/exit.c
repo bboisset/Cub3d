@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:30 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 19:40:51 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 23:41:12 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void free_config(t_map_config *config)
 		if (config->step > 3)
 			free(config->ZBuffer);
 	}
+	if (config->step >= 0 && config->step <= 2)
+		ft_lstfree(&config->temp_map);
 	free(config);
 }
 

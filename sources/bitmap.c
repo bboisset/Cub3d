@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:36:45 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 22:13:53 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 23:57:15 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	get_color(int x, int y, t_img_data *data)
 	return (color);
 }
 
-static int	write_data(t_img_data *data, int fd)
+static void	write_data(t_img_data *data, int fd)
 {
 	int	y;
 	int x;
@@ -41,16 +41,14 @@ static int	write_data(t_img_data *data, int fd)
 		while (x < data->dimension.x)
 		{
 			color = get_color(x, y, data);
-			if (write(fd, &color, 3) < 0)
-				return (-1);
+			write(fd, &color, 3);
 			x++;
 		}
 		y++;
 	}
-	return (0);
 }
 
-static int	bitmap_header(int file_size, int fd, t_img_data *data)
+static void	bitmap_header(int file_size, int fd, t_img_data *data)
 {
 	int				i;
 	int				tmp;
@@ -70,7 +68,7 @@ static int	bitmap_header(int file_size, int fd, t_img_data *data)
 	put_int_to_char(bmp_file_header + 22, tmp);
 	bmp_file_header[26] = (unsigned char)1;
 	bmp_file_header[28] = (unsigned char)24;
-	return (!(write(fd, bmp_file_header, 54) < 0));
+	write(fd, bmp_file_header, 54);
 }
 
 int			create_bitmap(t_map_config *config, t_img_data *data)
@@ -79,7 +77,10 @@ int			create_bitmap(t_map_config *config, t_img_data *data)
 	int	file_size;
 
 	if ((fd = open("./Cub3D.bmp", O_CREAT | O_RDWR, S_IRUSR)) < 0)
+	{
+		config->config_error = -11;
 		return (-11);
+	}
 	data->dimension.x = config->resolution.x;
 	data->dimension.y = config->resolution.y;
 	file_size = 54 + (config->resolution.x * config->resolution.y) * 4;

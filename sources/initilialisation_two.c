@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:13 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 22:20:02 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 23:41:15 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_map_config	*init_config(void)
 	new_config->config_error = 0;
 	new_config->minimap_on = 0;
 	new_config->save_img = 0;
-	new_config->step = 0;
+	new_config->step = -1;
 	new_config->player_count = 0;
 	new_config->temp_map = NULL;
 	new_config->sprt_lst = NULL;

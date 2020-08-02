@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 14:56:59 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 21:54:33 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 23:53:38 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ int first_launch(t_map_config	*config)
 	if (!(config->ZBuffer = malloc(config->resolution.x * sizeof(double))))
 		return (full_error_d(display_config, 0, 3));
 	config->step++;
-	if ((init_gun(display_config)) == -1)
+	if ((init_gun(display_config)) < 0)
 		return (full_error_d(display_config, 1, 3));
 	game_loop(config, camera, data);
-	if (mimimap(display_config) == -1)
+	if (mimimap(display_config) < 0)
 		return (full_error_d(display_config, 2, 3));
 	if (first_launch_end(display_config) == -1)
 		return (full_error_d(display_config, 2, 3));
