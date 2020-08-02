@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:56 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 18:19:45 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 19:06:50 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void free_textures(t_map_config	*config)
 		free_image(TEXTURE->west_texture);
 	if (TEXTURE->loadedTexture > 4)
 		free_image(TEXTURE->sprite_texture);
+	free(config->textures);
 }
 
 int texture_error(t_map_config	*config)

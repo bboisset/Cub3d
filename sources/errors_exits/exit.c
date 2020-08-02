@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:30 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 17:03:03 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 19:40:51 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void free_minimap(t_minimap *minimap, int type)
 void free_data(t_data *data)
 {
 	mlx_destroy_window(data->mlx_ptr, data->mlx_win);
-	free(data->mlx_ptr);
 	free(data->mlx_img);
 	free(data->data->data_img);
 	free(data->data);
