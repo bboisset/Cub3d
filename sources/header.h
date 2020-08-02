@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/02 15:37:05 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 17:01:48 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@
 # include <math.h>
 # include <unistd.h>
 # include <mlx.h>
-# include <stdio.h> //temp
-# include </opt/X11/include/mlx.h>
 # include "../includes/libft/libft.h"
 # include "../includes/get_next_line/get_next_line.h"
 
@@ -235,6 +233,7 @@ void				handle_cam_left(t_display_config *display_config);
 void 				reload_scene(t_display_config *display_config, int gun_anim);
 
 int					key_press(int keycode, t_display_config *display_config);
+int					handle_exit(t_display_config *display_config);
 int 				key_realease(int keycode, t_display_config *display_config);
 void				check_active_key(t_display_config *display_config);
 
@@ -283,6 +282,8 @@ void				init_raycast(int x, t_raycast *param,
 
 int					main_error(int n);
 void				free_textures(t_map_config	*config);
+void				free_data(t_data *data);
+void				free_image(t_img_data *img_data);
 int					texture_error(t_map_config	*config);
 int 				full_error_d(t_display_config *display_config, int type, int code);
 int					full_error(t_map_config *config, t_data *data, t_display *display, int code);

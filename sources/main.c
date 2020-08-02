@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:56:04 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/02 15:33:06 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 15:40:19 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int read_argument(const char *argument, t_map_config *config)
 	}
 	return (-1);
 }
-
-//check player count is 1
 
 int main(int argc, const char * argv[]) {
 	int					fd;

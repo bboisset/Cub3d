@@ -27,7 +27,6 @@ SRCS	=	sources/bitmap.c \
 			sources/read_file.c \
 			sources/read_file_struct.c \
 			sources/read_map.c \
-			sources/screenshot.c \
 			sources/sprite.c \
 			sources/sprite_list.c \
 			sources/utils.c \

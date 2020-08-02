@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptisteboisset <marvin@42.fr>             +#+  +:+       +#+        */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:57:42 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/01/24 17:57:47 by baptisteb        ###   ########.fr       */
+/*   Updated: 2020/08/02 18:23:01 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ static int	create_temp_map(t_map_config *config, char ***temp_map)
 		while (j < config->map_width.x)
 			ptr_temp_map[i][j++] = '1';
 		ptr_temp_map[i][j] = '\0';
-		free(temp_lst->content);
 		temp_lst = temp_lst->next;
 		i++;
 	}
+	ft_lstfree(&config->temp_map);
 	return (0);
 }
 
@@ -54,9 +54,11 @@ static int switch_temp_to_map(t_map_config *config, char ***temp_map)
 {
 	int		i;
 	int		j;
+	int		k;
 	char	**ptr_temp_map;
 	
 	i = 0;
+	k = 0;
 	ptr_temp_map = *temp_map;
 	while (i < config->map_width.x)
 	{
@@ -70,6 +72,8 @@ static int switch_temp_to_map(t_map_config *config, char ***temp_map)
 		}
 		i++;
 	}
+	while (k < config->map_width.y)
+		free(ptr_temp_map[k++]);
 	free(ptr_temp_map);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:30 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 15:35:31 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 17:03:03 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,21 @@ void free_minimap(t_minimap *minimap, int type)
 	free(minimap);
 }
 
+void free_data(t_data *data)
+{
+	mlx_destroy_window(data->mlx_ptr, data->mlx_win);
+	free(data->mlx_ptr);
+	free(data->mlx_img);
+	free(data->data->data_img);
+	free(data->data);
+	free(data);
+}
+
 int exit_pr(t_display_config *display_config)
 {
 	free(D_CAM);
 	free_config(D_CONFIG);
-		mlx_destroy_window(D_DATA->mlx_ptr, D_DATA->mlx_win);
-		free(D_DATA->mlx_ptr);
-		free(D_DATA->mlx_img);
-		free(D_DATA->data->data_img);
-		free(D_DATA->data);
-	free(D_DATA);
+	free_data(D_DATA);
 	free_minimap(MINIMAP, 1);
 	free_gun(GUN);
 	return (0);

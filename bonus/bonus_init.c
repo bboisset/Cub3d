@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:38:28 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 15:38:29 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 16:14:02 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int init_gun(t_display_config *display_config)
 		return (-10);
 	}
 	img_ptr = mlx_xpm_file_to_image(D_DATA->mlx_ptr, "/Users/baptisteboisset/Desktop/cub3d/srcs/imgs/gun3.xpm",
-									&w, &w);
+									&w, &h);
 	if (!img_ptr || !(GUN->img = load_textures_struct(img_ptr, NULL)))
 	{
 		D_CONFIG->config_error = -3;

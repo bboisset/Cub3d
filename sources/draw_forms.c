@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:11 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 15:37:16 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 15:40:12 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void draw_stripe_line_loop(int x, t_dimension tex_dim, t_drw_spt *param,
 	int index_sprt;
 	
 	y = param->draw_start.y;
-	//printf("o--%f--o\n     \n%f     %f\n     \no--%f--o\n\n\n",param->draw_start.y,param->draw_end.y,param->draw_start.x,param->draw_end.x);
 	while (y < param->draw_end.y)
 	{
 		d = (y - param->v_screen_move) * 256 - config->resolution.y * 128 +
