@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:23 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 15:35:25 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 22:08:49 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void code_error(int code)
 	else if (code == 1)
 		ft_putstr("Can't access map Or Wrong Configuration\n");
 	else if (code == 2)
-		ft_putstr("Missing Argument\n");
+		ft_putstr("Only map path and '--save' condition are expected\n");
 	else if (code == 3)
 		ft_putstr("Not Enough Memory Avalaible To Run\n");
 	else if (code == 4)

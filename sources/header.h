@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/02 17:01:48 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 22:19:42 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ typedef struct		s_map_config
 	int				save_img;
 	int				config_error;
 	int				step;
+	int				player_count;
 }					t_map_config;
 
 typedef struct		s_display
@@ -210,7 +211,7 @@ int 				init_gun(t_display_config *display_config);
 int					init_icon_player(t_display_config *display_config);
 int					init_minimap(t_display_config *display_config);
 
-void				play_sound(char *path, int volume);
+void				play_sound(char *path, int volume, t_display_config *display_config);
 void				sprite_in_front(t_display_config *display_config, t_sprite_list *temp_sprt);
 
 int					ft_edit_atoi(const char *str, int start);

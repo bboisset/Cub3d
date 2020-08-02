@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialisation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptisteboisset <marvin@42.fr>             +#+  +:+       +#+        */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:49 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/01/24 17:54:24 by baptisteb        ###   ########.fr       */
+/*   Updated: 2020/08/02 22:14:46 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_data			*init_data(t_map_config *config)
 	if ((data->mlx_ptr = mlx_init()) == NULL)
 		return (NULL);
 	if ((data->mlx_win = mlx_new_window(data->mlx_ptr, config->resolution.x,
-		config->resolution.y, "cub3d")) == NULL)
+		config->resolution.y, "Cub3D")) == NULL)
 		return (NULL);
 	if ((data->mlx_img = mlx_new_image(data->mlx_ptr, config->resolution.x,
 		config->resolution.y)) == NULL)

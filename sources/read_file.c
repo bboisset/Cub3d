@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:38 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 15:37:39 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 22:20:56 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void	assign_map_width(char *str, t_map_config *config)
 static int inspect_line(char *str, int line_n, t_map_config *config, int map_start)
 {
 	int				i;
-	static int		player_count = 0;
 	char			*set;
 	t_list			*new_list;
 	t_sprite_list	*new_sprt_lst;
@@ -50,9 +49,9 @@ static int inspect_line(char *str, int line_n, t_map_config *config, int map_sta
 				config->init_pos.x = get_post_wo_spaces(str,"NSEW", i) + 0.5;
 				config->init_pos.y = line_n - map_start + 0.5;
 				str[i] = '0';
-				player_count++;
+				config->player_count++;
 			}
-			if (!is_in_set(str[i++], set) || player_count > 1)
+			if (!is_in_set(str[i++], set) || config->player_count > 1)
 				return (-4);
 		}
 	}
@@ -125,7 +124,7 @@ int read_file(int fd, t_map_config *config)
 		if (res == -1)
 			return (-1);
 	}
-	if (fd_status == -1)
+	if (fd_status == -1 || config->player_count == 0)
 		return (-1);
 	return (0);
 }

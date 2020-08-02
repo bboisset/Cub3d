@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:54:31 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/02 16:31:36 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 21:53:20 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int handle_exit(t_display_config *display_config)
 {
 	system("killall afplay 2&>/dev/null >/dev/null\n");
 	exit_pr(display_config);
-	while (1 == 1)
-	{}
 	exit(1);
 	return (0);
 }

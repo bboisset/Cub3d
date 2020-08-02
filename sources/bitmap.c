@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:36:45 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 15:36:46 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 22:13:53 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int			create_bitmap(t_map_config *config, t_img_data *data)
 	int	fd;
 	int	file_size;
 
-	if ((fd = open("/tmp/bitmap.bmp", O_CREAT | O_RDWR)) < 0)
+	if ((fd = open("./Cub3D.bmp", O_CREAT | O_RDWR, S_IRUSR)) < 0)
 		return (-11);
 	data->dimension.x = config->resolution.x;
 	data->dimension.y = config->resolution.y;

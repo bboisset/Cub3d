@@ -1,4 +1,4 @@
-NAME	=	cub3D
+NAME	=	Cub3D
 
 MLX		=	-lmlx -lm -framework OpenGL -framework AppKit
 
@@ -61,7 +61,7 @@ clean :
 fclean : clean
 	$(MAKE) fclean -C $(LIBFT)
 	rm -rf $(NAME)
-	rm -rf cub3d.bmp
+	rm -rf Cub3D.bmp
 
 re : fclean all
 

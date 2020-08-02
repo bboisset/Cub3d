@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:49:38 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/02 15:38:47 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 21:54:22 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void fire(t_display_config *display_config)
 	if (GUN->ammo > 0)
 	{
 		GUN->ammo--;
-		play_sound("/Users/baptisteboisset/Desktop/cub3d/sound/gun.wav", 0);
+		play_sound("./ressources/sounds/gun.wav", 0, display_config);
 		sprite_in_front_loop(display_config);
 		gun(display_config, 0);
 	}

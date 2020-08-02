@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:56:04 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/02 15:40:19 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/02 21:59:44 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int read_argument(const char *argument, t_map_config *config)
 {
-	if (ft_strncmp(argument, "-save", ft_strlen(argument)) == 0)
+	if (ft_strncmp(argument, "--save", ft_strlen(argument)) == 0)
 	{
 		config->save_img = 1;
 		return (0);
@@ -30,12 +30,10 @@ int main(int argc, const char * argv[]) {
 
 	if (!(config = init_config()))
 		return (main_error(3));
-	argc = 2;
-	argv[1] = "/Users/baptisteboisset/Desktop/cub3d/test.txt";
-    if (argc > 2)
+    if (argc == 3)
         if (read_argument(argv[2], config) == -1)
 			return (map_error(config, 0));
-    if (argc > 1)
+    if (argc == 2 || argc == 3)
 	{
 		if (!(fd = open(argv[1], O_RDONLY)) || (res = read_file(fd, config))
 			!= -1)
