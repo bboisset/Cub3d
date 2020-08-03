@@ -6,13 +6,13 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:48:51 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 18:45:29 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 21:20:40 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-t_img_data get_text_by_oritentation(t_map_config *config)
+t_img_data	get_text_by_oritentation(t_map_config *config)
 {
 	if (config->wall_dir == 'N')
 		return (*config->textures->north_texture);
@@ -25,41 +25,42 @@ t_img_data get_text_by_oritentation(t_map_config *config)
 	return (*config->textures->north_texture);
 }
 
-/**
- * Draw wall with texture. With given x0/y0 to given xMax/yMax
- * Select texture to apply by player orientation N/S/E/W
- */
-void	draw_texture(int x, int tex_x, t_data *data, t_map_config *config,
-t_raycast *param)
+/*
+** Draw wall with texture. With given x0/y0 to given xMax/yMax
+** Select texture to apply by player orientation N/S/E/W
+*/
+
+void		draw_texture(int x, int tex_x, t_full_conf *full_conf, t_raycast *param)
 {
 	int y;
 	int texy;
 	int index;
 	t_img_data c_texture;
-	
-	c_texture = get_text_by_oritentation(config);
-	data->data->data_img = mlx_get_data_addr(data->mlx_img, &data->data->bpp,
-		&data->data->sizeline, &data->data->endian);
+
+	c_texture = get_text_by_oritentation(full_conf->config);
+	full_conf->data->data->data_img = mlx_get_data_addr(
+	full_conf->data->mlx_img, &full_conf->data->data->bpp,
+	&full_conf->data->data->sizeline, &full_conf->data->data->endian);
 	y = param->draw.draw_start;
 	while (y < param->draw.draw_end)
 	{
-		texy = fabs((((y * 256 - config->res.y * 128 +
+		texy = fabs((((y * 256 - full_conf->config->res.y * 128 +
 			param->line_height * 128) * TEXT_H) / param->line_height) / 256);
-		index = y * data->data->sizeline + (data->data->bpp >> 3) * x;
-		ft_memcpy(&data->data->data_img[index],
-			&c_texture.data_img[texy % TEXT_H *
-			c_texture.sizeline + tex_x % TEXT_H *
-			(c_texture.bpp >> 3)], sizeof(int));
+		index = y * full_conf->data->data->sizeline +
+			(full_conf->data->data->bpp >> 3) * x;
+		ft_memcpy(&full_conf->data->data->data_img[index],
+			&c_texture.data_img[texy % TEXT_H * c_texture.sizeline +
+			tex_x % TEXT_H * (c_texture.bpp >> 3)], sizeof(int));
 		y++;
 	}
 }
 
-void fill_img(int x, int y, int color, t_img_data *img)
+void		fill_img(int x, int y, int color, t_img_data *img)
 {
 	int index;
 	int x1;
 	int y1;
-	
+
 	x1 = 0;
 	while (x1 < x)
 	{

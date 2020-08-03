@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 20:06:05 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 20:18:21 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 20:21:49 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ static void	assign_map_width(char *str, t_map_config *config)
 
 int			char_is_sprite(char *str, int i, int map_y, t_map_config *config)
 {
-	t_sprite_list   *new_sprt_lst;
+	t_sprite_list	*new_sprt_lst;
 
-	if (!(new_sprt_lst = ft_sprt_lst_nw(get_post_wo_spaces(str, "2", i), map_y)))
+	if (!(new_sprt_lst = ft_sprt_lst_nw(get_post_wo_spaces(str, "2", i),
+		map_y)))
 		return (-3);
 	ft_sprt_lst_back(&config->sprt_lst, new_sprt_lst);
 	i++;
@@ -42,7 +43,7 @@ void		char_is_player(t_map_config *config, char *str, int i, int map_y)
 
 int			inspect_line_end(char *str, t_map_config *config)
 {
-	t_list  *new_list;
+	t_list	*new_list;
 
 	if (last_char_is_wall(str) == 0 ||
 		!(new_list = ft_lstnew(ft_strtrim_all(str, " "))))

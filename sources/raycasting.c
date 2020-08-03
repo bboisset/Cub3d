@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:31 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 18:59:38 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 21:18:08 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int raycasting_loop(t_full_conf *full_conf)
 			&param);
 		define_wall(full_conf->config, full_conf->camera, full_conf->data, side,
 			&param);
-		draw_texture(x, tex_x, full_conf->data, full_conf->config, &param);
+		draw_texture(x, tex_x, full_conf, &param);
 		x++;
 	}
 	return (0);

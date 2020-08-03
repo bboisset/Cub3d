@@ -6,13 +6,13 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:58:17 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 15:36:12 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 21:37:51 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int		ft_edit_atoi(const char *str, int start)
+int			ft_edit_atoi(const char *str, int start)
 {
 	int	i;
 	int	number;
@@ -61,11 +61,12 @@ char		*ft_strtrim_all(char const *s1, char const *set)
 	return (new_str);
 }
 
-/**
- * Find last occurance in string, but remove spaces of count
- * Max is the limit to search
- */
-int get_post_wo_spaces(char *str, char *set, int max)
+/*
+** Find last occurance in string, but remove spaces of count
+** Max is the limit to search
+*/
+
+int			get_post_wo_spaces(char *str, char *set, int max)
 {
 	int i;
 	int j;
@@ -111,7 +112,7 @@ static void define_direction_two(char c, t_map_config *config, t_display *camera
 	}
 }
 
-void	define_direction(char c, t_map_config *config, t_display *camera)
+void		define_direction(char c, t_map_config *config, t_display *camera)
 {
 	if (c == 'N')
 	{

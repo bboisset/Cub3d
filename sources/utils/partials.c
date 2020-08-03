@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:36:39 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 20:17:14 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 20:21:13 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 int	check_color(int red, int green, int blue)
 {
-	return (red >= 0 && red  <= 255 && green >= 0 && green <= 255 && blue >=
-		0 && blue <= 255) ? 0 : -9;
+	return (red >= 0 && red  <= 255 && green >= 0 && green <= 255 &&
+		blue >= 0 && blue <= 255) ? 0 : -9;
 }
 
 int	rgb_to_int(int r, int g, int b)
 {
-	int c = r;
+	int c;
 
+	c = r;
 	c = (c << 8) | g;
 	c = (c << 8) | b;
-	return c;
+	return (c);
 }
 
 int	is_in_set(char c, const char *set)

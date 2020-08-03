@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 20:07:02 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 21:18:00 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,8 +246,8 @@ t_img_data					*load_textures_struct(void *img_ptr,
 int							raycasting_loop(t_full_conf *full_conf);
 void						game_loop(t_full_conf *full_conf);
 int							floor_sky_cast(t_full_conf *full_conf);
-void						draw_texture(int x, int tex_x, t_data *data,
-	t_map_config *config, t_raycast *param);
+void						draw_texture(int x, int tex_x,
+	t_full_conf *full_conf, t_raycast *param);
 void						draw_stripe(t_drw_spt *param,
 	t_full_conf *full_conf);
 
