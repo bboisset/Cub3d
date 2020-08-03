@@ -45,13 +45,13 @@ OBJSRCS			=	$(SRCS:.c=.o)
 OBJSRCSBONUS	=	$(SRCS_BONUS:.c=.o)
 
 $(NAME) : $(OBJSRCS) $(OBJSRCSBONUS)
-	@echo "\033[33m[Remove last version...]"
+	@echo "\033[33m[Clean old Cub3D...]"
 	@rm -rf Cub3D
-	@echo "\033[33m[Libft compilation...]"
+	@echo "\033[32m[Compile Libft...]"
 	@$(MAKE) -C $(LIBFT)
-	@echo "\033[33m[Cub3D compilation...]"
+	@echo "\033[32m[Compile Cub3D...]"
 	@gcc $(OBJSRCSBONUS) $(OBJSRCS) -I./sources/header.h -I./usr/include -Wall -Wextra -Werror $(MLX) $(LIBFT)/libft.a -o $(NAME)
-	@echo "\033[33m[Done !]"
+	@echo "\033[32m[Success !]"
 
 all : $(NAME)
 
