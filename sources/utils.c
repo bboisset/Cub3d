@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptisteboisset <marvin@42.fr>             +#+  +:+       +#+        */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:58:17 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/01/24 17:58:21 by baptisteb        ###   ########.fr       */
+/*   Updated: 2020/08/03 15:36:12 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		ft_edit_atoi(const char *str, int start)
 {
 	int	i;
 	int	number;
-	
+
 	i = start;
 	number = 0;
 	if (str[0] == '\0')
@@ -38,7 +38,7 @@ char		*ft_strtrim_all(char const *s1, char const *set)
 	int		j;
 	int		to_rm;
 	char	*new_str;
-	
+
 	i = 0;
 	j = 0;
 	to_rm = 0;
@@ -70,7 +70,7 @@ int get_post_wo_spaces(char *str, char *set, int max)
 	int i;
 	int j;
 	int res;
-	
+
 	i = 0;
 	j = 0;
 	res = -1;
