@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 14:56:59 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 21:52:19 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:08:58 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,16 @@ int			first_launch(t_map_config *config)
 	if (first_launch_end(full_conf) == -1)
 		return (full_error_d(full_conf, 2, 3));
 	return (0);
+}
+
+void		game_loop(t_full_conf *full_conf)
+{
+	floor_sky_cast(full_conf);
+	raycasting_loop(full_conf);
+	sprite_loop(full_conf);
+	if (full_conf->config->save_img != 1)
+		mlx_put_image_to_window(full_conf->data->mlx_ptr,
+			full_conf->data->mlx_win,
+			full_conf->data->mlx_img, 0, 0);
+	full_conf->data->loop_count++;
 }

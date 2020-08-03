@@ -6,46 +6,48 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:31 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 21:48:46 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:03:38 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-t_dimension	get_step(t_raycast *param, t_display *camera, t_map_config *config)
+static t_dimension	get_step(t_raycast *param, t_display *cam)
 {
 	t_dimension step;
 
-	if (camera->dir.x < 0)
+	if (cam->dir.x < 0)
 	{
 		step.x = -1;
-		param->side_dist_x = (camera->pos.x - param->map_x) * param->delta_dist_x;
+		param->side_dist_x = (cam->pos.x - param->map_x) * param->delta_dist_x;
 	}
 	else
 	{
 		step.x = 1;
-		param->side_dist_x = (param->map_x + 1.0 - camera->pos.x) * param->delta_dist_x;
+		param->side_dist_x = (param->map_x + 1.0 - cam->pos.x) *
+			param->delta_dist_x;
 	}
-	if (camera->dir.y < 0)
+	if (cam->dir.y < 0)
 	{
 		step.y = -1;
-		param->side_dist_y = (camera->pos.y - param->map_y) * param->delta_dist_y;
+		param->side_dist_y = (cam->pos.y - param->map_y) * param->delta_dist_y;
 	}
 	else
 	{
 		step.y = 1;
-		param->side_dist_y = (param->map_y + 1.0 - camera->pos.y) * param->delta_dist_y;
+		param->side_dist_y = (param->map_y + 1.0 - cam->pos.y) *
+			param->delta_dist_y;
 	}
 	return (step);
 }
 
-int		loop_till_hit(int side, t_raycast *param, t_display *camera,
+int					loop_till_hit(int side, t_raycast *param, t_display *camera,
 	t_map_config *config)
 {
 	int			hit;
 	t_dimension	step;
 
-	step = get_step(param, camera, config);
+	step = get_step(param, camera);
 	hit = 0;
 	while (hit == 0)
 	{
@@ -68,27 +70,30 @@ int		loop_till_hit(int side, t_raycast *param, t_display *camera,
 	return (side);
 }
 
-int		define_text_x(int side, int x, t_map_config *config, t_display *camera,
+int					define_text_x(int side, int x, t_full_conf *full_conf,
 	t_raycast *param)
 {
-	double	wallX;
+	double	wall_x;
 	int		tex_x;
 
 	if (side == 0)
-		wallX = camera->pos.y + param->perp_wall_dist * camera->dir.y;
+		wall_x = full_conf->camera->pos.y + param->perp_wall_dist *
+			full_conf->camera->dir.y;
 	else
-		wallX = camera->pos.x + param->perp_wall_dist * camera->dir.x;
-	wallX -= floor((wallX));
-	config->z_buffer[x] = param->perp_wall_dist;
-	tex_x = wallX * TEXT_W;
-	if(side == 0 && camera->dir.x > 0)
+		wall_x = full_conf->camera->pos.x + param->perp_wall_dist *
+			full_conf->camera->dir.x;
+	wall_x -= floor((wall_x));
+	full_conf->config->z_buffer[x] = param->perp_wall_dist;
+	tex_x = wall_x * TEXT_W;
+	if (side == 0 && full_conf->camera->dir.x > 0)
 		tex_x = TEXT_W - tex_x - 1;
-	if(side == 1 && camera->dir.y < 0)
+	if (side == 1 && full_conf->camera->dir.y < 0)
 		tex_x = TEXT_W - tex_x - 1;
 	return (tex_x);
 }
 
-void	define_wall(t_full_conf *full_conf, int side, t_raycast *param)
+void				define_wall(t_full_conf *full_conf, int side,
+	t_raycast *param)
 {
 	if (side == 1)
 	{
@@ -106,9 +111,9 @@ void	define_wall(t_full_conf *full_conf, int side, t_raycast *param)
 	}
 }
 
-int		raycasting_loop(t_full_conf *full_conf)
+int					raycasting_loop(t_full_conf *full_conf)
 {
-	int		x;
+	int			x;
 	int			side;
 	int			tex_x;
 	t_raycast	param;
@@ -119,8 +124,7 @@ int		raycasting_loop(t_full_conf *full_conf)
 		init_raycast(x, &param, full_conf->camera, full_conf->config);
 		side = wall_distance(&param, full_conf->camera, full_conf->config);
 		define_draw(&param, full_conf->camera, full_conf->config);
-		tex_x = define_text_x(side, x, full_conf->config, full_conf->camera,
-			&param);
+		tex_x = define_text_x(side, x, full_conf, &param);
 		define_wall(full_conf, side, &param);
 		draw_texture(x, tex_x, full_conf, &param);
 		x++;

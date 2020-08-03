@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:48:51 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 21:39:52 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:03:39 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		draw_texture(int x, int tex_x, t_full_conf *full_conf,
 	int			y;
 	int			texy;
 	int			index;
-	t_img_data 	c_texture;
+	t_img_data	c_texture;
 
 	c_texture = get_text_by_oritentation(full_conf->config);
 	full_conf->data->data->data_img = mlx_get_data_addr(

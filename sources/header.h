@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 21:18:00 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:07:54 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define ROT_SPEED 0.12
 # define SCREEN_MAX_W 2560
 # define SCREEN_MAX_H 1440
+# define SCALE_SPRITE 1
+# define VMOVE 64
 # define PI 3.1415926535
 # include <stdlib.h>
 # include <fcntl.h>

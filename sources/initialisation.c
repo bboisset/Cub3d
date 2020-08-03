@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:49 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 19:06:45 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:06:10 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static t_img_data		*init_img_data(t_data *data)
 {
-	t_img_data *img_data;
-	
+	t_img_data	*img_data;
+
 	if (!(img_data = (t_img_data*)malloc(sizeof(t_img_data))))
 		return (NULL);
 	img_data->data_img = mlx_get_data_addr(data->mlx_img, &img_data->bpp, 
@@ -23,19 +23,19 @@ static t_img_data		*init_img_data(t_data *data)
 	return (img_data);
 }
 
-static t_active_action		init_active_key(void)
+static t_active_action	init_active_key(void)
 {
 	t_active_action	pressed_key;
-	
+
 	pressed_key.down_active = 0;
 	pressed_key.up_active = 0;
 	return (pressed_key);
 }
 
-t_data			*init_data(t_map_config *config)
+t_data					*init_data(t_map_config *config)
 {
 	t_data *data;
-	
+
 	if (!(data = (t_data*)malloc(sizeof(t_data))))
 		return (NULL);
 	if ((data->mlx_ptr = mlx_init()) == NULL)
@@ -52,11 +52,11 @@ t_data			*init_data(t_map_config *config)
 	return (data);
 }
 
-t_full_conf	*join_full_conf(t_display *display, 
-	t_map_config *config,t_data *data)
+t_full_conf				*join_full_conf(t_display *display, 
+	t_map_config *config, t_data *data)
 {
-	t_full_conf *full_conf;
-	
+	t_full_conf	*full_conf;
+
 	if (!(full_conf = (t_full_conf*)malloc(sizeof(t_full_conf))))
 		return (NULL);
 	full_conf->config = config;

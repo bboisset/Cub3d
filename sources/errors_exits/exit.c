@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:30 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 21:42:55 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 21:57:41 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,3 @@ int		exit_pr(t_full_conf *full_conf)
 	free_gun(full_conf->gun);
 	return (0);
 }
-

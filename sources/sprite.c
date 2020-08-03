@@ -6,15 +6,14 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:36:42 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 19:01:06 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:09:31 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-# define SCALE_SPRITE 1
-# define VMOVE 64
 
-static t_drw_spt init_draw_sprite(t_map_config *config, t_display *camera, t_dimension sprite_pos)
+static t_drw_spt	init_draw_sprite(t_map_config *config, t_display *camera,
+	t_dimension sprite_pos)
 {
 	t_drw_spt	param;
 	
@@ -34,7 +33,7 @@ static t_drw_spt init_draw_sprite(t_map_config *config, t_display *camera, t_dim
 	return (param);
 }
 
-void define_spt_draw_w(t_map_config *config, t_drw_spt	*param)
+void				define_spt_draw_w(t_map_config *config, t_drw_spt	*param)
 {
 	param->draw_start.y = -param->spt_dim.y / 2 + config->res.y / 2
 	+ param->v_screen_move;
@@ -45,7 +44,7 @@ void define_spt_draw_w(t_map_config *config, t_drw_spt	*param)
 		config->res.y) ? config->res.y - 1 : param->draw_end.y;
 }
 
-void define_spt_draw_h(t_map_config *config, t_drw_spt	*param)
+void				define_spt_draw_h(t_map_config *config, t_drw_spt	*param)
 {
 	param->spt_dim.x = abs(((int) (config->res.y /
 		(param->transform.y))) / SCALE_SPRITE);
@@ -56,7 +55,7 @@ void define_spt_draw_h(t_map_config *config, t_drw_spt	*param)
 		config->res.x) ? config->res.x - 1 : param->draw_end.x;
 }
 
-static void is_sprite(t_full_conf *full_conf, t_sprite_list *temp_sprt)
+static void			is_sprite(t_full_conf *full_conf, t_sprite_list *temp_sprt)
 {
 	define_spt_draw_w(full_conf->config, &temp_sprt->param);
 	define_spt_draw_h(full_conf->config, &temp_sprt->param);
@@ -64,7 +63,7 @@ static void is_sprite(t_full_conf *full_conf, t_sprite_list *temp_sprt)
 	full_conf->data->spt_info = temp_sprt->param;
 }
 
-static void sprite_loop(t_full_conf *full_conf)
+static void			sprite_loop(t_full_conf *full_conf)
 {
 	int				sprite_count;
 	int				i;
@@ -75,21 +74,10 @@ static void sprite_loop(t_full_conf *full_conf)
 	temp_sprt = full_conf->config->sprt_lst;
 	while (i < sprite_count)
 	{
-		temp_sprt->param = init_draw_sprite(full_conf->config, full_conf->camera, temp_sprt->dimension);
+		temp_sprt->param = init_draw_sprite(full_conf->config,
+			full_conf->camera, temp_sprt->dimension);
 		is_sprite(full_conf, temp_sprt);
 		temp_sprt = temp_sprt->next;
 		i++;
 	}
-}
-
-void game_loop(t_full_conf *full_conf)
-{
-	floor_sky_cast(full_conf);
-	raycasting_loop(full_conf);
-	sprite_loop(full_conf);
-	if (full_conf->config->save_img != 1)
-		mlx_put_image_to_window(full_conf->data->mlx_ptr,
-			full_conf->data->mlx_win,
-			full_conf->data->mlx_img, 0, 0);
-	full_conf->data->loop_count++;
 }
