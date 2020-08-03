@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:38:09 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 15:38:11 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 15:46:43 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_sprite_list	*ft_sprt_lst_nw(int x, int y)
 {
 	t_sprite_list	*new_sprt;
-	
+
 	if (!(new_sprt = (t_sprite_list*)malloc(sizeof(t_sprite_list))))
 		return (NULL);
 	if (!x || !y)
@@ -32,10 +32,10 @@ t_sprite_list	*ft_sprt_lst_nw(int x, int y)
 	return (new_sprt);
 }
 
-void	ft_sprt_lst_back(t_sprite_list **a_sprt_lst, t_sprite_list *new)
+void			ft_sprt_lst_back(t_sprite_list **a_sprt_lst, t_sprite_list *new)
 {
 	t_sprite_list	*temp;
-	
+
 	if (new)
 	{
 		if (*a_sprt_lst)
@@ -50,10 +50,10 @@ void	ft_sprt_lst_back(t_sprite_list **a_sprt_lst, t_sprite_list *new)
 	}
 }
 
-int	ft_sprt_lstsize(t_sprite_list *lst)
+int				ft_sprt_lstsize(t_sprite_list *lst)
 {
 	int i;
-	
+
 	i = 0;
 	while (lst)
 	{
