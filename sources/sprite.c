@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:36:42 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 22:11:52 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 23:24:02 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void			is_sprite(t_full_conf *full_conf, t_sprite_list *temp_sprt)
 	full_conf->data->spt_info = temp_sprt->param;
 }
 
-static void			sprite_loop(t_full_conf *full_conf)
+void				sprite_loop(t_full_conf *full_conf)
 {
 	int				sprite_count;
 	int				i;

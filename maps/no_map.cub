@@ -1,0 +1,8 @@
+R 600 600
+NO ./ressources/imgs/north.xpm
+SO ./ressources/imgs/south.xpm
+WE ./ressources/imgs/west.xpm
+EA ./ressources/imgs/east.xpm
+S ./ressources/imgs/barrel.xpm
+F 62,198,247
+C 214,145,114

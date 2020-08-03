@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 22:07:54 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 23:24:25 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <unistd.h>
 # include <mlx.h>
 # include "../includes/libft/libft.h"
-# include "../includes/get_next_line/get_next_line.h"
+# include "../includes/Get-Next-Line/get_next_line.h"
 
 typedef struct				s_dimension
 {
@@ -320,6 +320,7 @@ int							check_map_wall(t_map_config *config);
 t_sprite_list				*ft_sprt_lst_nw(int x, int y);
 void						ft_sprt_lst_back(t_sprite_list **a_sprt_lst,
 	t_sprite_list *new);
+void						sprite_loop(t_full_conf *full_conf);
 int							ft_sprt_lstsize(t_sprite_list *lst);
 
 int							char_is_sprite(char *str, int i, int map_y,
