@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:36:45 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 15:03:14 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 15:43:02 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static int	get_color(int x, int y, t_img_data *data)
 {
 	int color;
 
-	color = *(int *)(data->data_img + ( 4 * (int)data->dimension.x * ((int)data->dimension.y - 1 - y) + (4 * x)));
+	color = *(int *)(data->data_img + (4 * (int)data->dimension.x *
+		((int)data->dimension.y - 1 - y) + (4 * x)));
 	return (color);
 }
 
@@ -33,7 +34,7 @@ static void	write_data(t_img_data *data, int fd)
 	int	y;
 	int x;
 	int	color;
-	
+
 	y = 0;
 	while (y < data->dimension.y)
 	{
@@ -53,7 +54,7 @@ static void	bitmap_header(int file_size, int fd, t_img_data *data)
 	int				i;
 	int				tmp;
 	unsigned char	bmp_file_header[54];
-	
+
 	i = 0;
 	while (i < 54)
 		bmp_file_header[i++] = (unsigned char)0;
