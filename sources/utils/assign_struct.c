@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:36:33 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 18:47:11 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 20:19:49 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*get_path(int start, char *str, t_map_config *config)
 {
 	int		i;
 	char	*path;
-	
+
 	i = start;
 	while (str[i] == ' ')
 		i++;
@@ -33,10 +33,10 @@ char	*get_path(int start, char *str, t_map_config *config)
 	return (path);
 }
 
-int 	assign_sky(char *str, t_map_config *config)
+int		assign_sky(char *str, t_map_config *config)
 {
 	int i;
-	
+
 	i = 1;
 	while (str[i] == ' ')
 		i++;
@@ -55,14 +55,16 @@ int 	assign_sky(char *str, t_map_config *config)
 		i++;
 	if (str[i++] != '\0')
 		return (-6);
-	config->sky_color.integer = rgb_to_int(config->sky_color.red, config->sky_color.green, config->sky_color.blue);
-	return (check_color(config->sky_color.red, config->sky_color.green, config->sky_color.blue));
+	config->sky_color.integer = rgb_to_int(config->sky_color.red,
+		config->sky_color.green, config->sky_color.blue);
+	return (check_color(config->sky_color.red, config->sky_color.green,
+		config->sky_color.blue));
 }
 
-int 	assign_ground(char *str, t_map_config *config)
+int		assign_ground(char *str, t_map_config *config)
 {
 	int i;
-	
+
 	i = 1;
 	while (str[i] == ' ')
 		i++;
@@ -81,14 +83,16 @@ int 	assign_ground(char *str, t_map_config *config)
 		i++;
 	if (str[i++] != '\0')
 		return (-6);
-	config->ground_color.integer = rgb_to_int(config->ground_color.red, config->ground_color.green, config->ground_color.blue);
-	return (check_color(config->ground_color.red, config->ground_color.green, config->ground_color.blue));
+	config->ground_color.integer = rgb_to_int(config->ground_color.red,
+		config->ground_color.green, config->ground_color.blue);
+	return (check_color(config->ground_color.red, config->ground_color.green,
+		config->ground_color.blue));
 }
 
-int assign_resolutions(char *str, t_map_config *config)
+int		assign_resolutions(char *str, t_map_config *config)
 {
 	int i;
-	
+
 	i = 1;
 	while (str[i] == ' ')
 		i++;

@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:38 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 20:09:36 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 20:16:33 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ static int	inspect_line(char *str, int line_n, t_map_config *config,
 	return (inspect_line_end(str, config));
 }
 
-static int	element_hub_two(char *str, int line_n, int res, t_map_config *config)
+static int	element_hub_two(char *str, int line_n, int res,
+	t_map_config *config)
 {
 	if (str[0] == 'E' && str[1] == 'A')
 		config->textures->east_texture_path = get_path(2, str, config);
@@ -88,8 +89,8 @@ static int	element_hub(char *str, int line_n, t_map_config *config)
 
 int			read_file(int fd, t_map_config *config)
 {
-	int 	fd_status;
-	int 	line_n;
+	int		fd_status;
+	int		line_n;
 	int		res;
 	char	*new_line;
 

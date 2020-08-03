@@ -6,27 +6,28 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:36:39 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 19:40:18 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 20:17:14 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-int 	check_color(int red, int green, int blue)
+int	check_color(int red, int green, int blue)
 {
-	return (red >= 0 && red  <= 255 && green >= 0 && green <= 255 && blue >= 0 && blue <= 255) ? 0 : -9;
+	return (red >= 0 && red  <= 255 && green >= 0 && green <= 255 && blue >=
+		0 && blue <= 255) ? 0 : -9;
 }
 
-int rgb_to_int(int r, int g, int b)
+int	rgb_to_int(int r, int g, int b)
 {
 	int c = r;
-	
+
 	c = (c << 8) | g;
 	c = (c << 8) | b;
 	return c;
 }
 
-int is_in_set(char c, const char *set)
+int	is_in_set(char c, const char *set)
 {
 	int i;
 
@@ -37,10 +38,10 @@ int is_in_set(char c, const char *set)
 	return (0);
 }
 
-int last_char_is_wall(char *str)
+int	last_char_is_wall(char *str)
 {
 	int i;
-	
+
 	i = 0;
 	while (str[i] != '\0')
 		i++;
