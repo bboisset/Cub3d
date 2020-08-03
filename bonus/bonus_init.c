@@ -6,18 +6,17 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:38:28 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 22:14:10 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:19:39 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../sources/header.h"
 
 int			init_gun(t_full_conf *full_conf)
 {
-	void *img_ptr;
-	int w;
-	int h;
+	void	*img_ptr;
+	int		w;
+	int		h;
 
 	w = 320;
 	h = 200;
@@ -64,9 +63,9 @@ int			init_icon_player(t_full_conf *full_conf)
 }
 
 /*
-** Define Minimap width with 20% of screen width or screen height if map width 
-** is superior of map height.
-** Define size of cube by minimap width/height divided by map width/height.
+** Define Minimap width with 20% of screen width or screen height if map width
+** is superior of map height
+** Define size of cube by minimap width/height divided by map width/height
 */
 
 static void	init_minimap_width_or_height(t_full_conf *full_conf)

@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:56:20 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 22:17:45 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:20:13 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void		fill_minimap_line(int vline_n, int color, t_full_conf *full_conf)
 			full_conf->minimap->cub_sz)][(int)floor(x /
 			full_conf->minimap->cub_sz)] - 48 == 2)
 			color = 65280;
-		index = x * full_conf->minimap->data->sizeline + 
+		index = x * full_conf->minimap->data->sizeline +
 			(full_conf->minimap->data->bpp >> 3) * vline_n;
-		ft_memcpy(&full_conf->minimap->data->data_img[index], &color, 
+		ft_memcpy(&full_conf->minimap->data->data_img[index], &color,
 			sizeof(int));
 		x++;
 	}

@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:38:37 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 22:16:23 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:20:00 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	sprite_in_front(t_full_conf *full_conf, t_sprite_list *temp_sprt)
 	pointer.y = full_conf->config->res.y / 1.4;
 	if (pointer.x >= temp_sprt->param.draw_start.x && pointer.x <=
 	temp_sprt->param.draw_end.x && pointer.y >= temp_sprt->param.draw_start.y &&
-	pointer.y <=temp_sprt->param.draw_end.y)
+	pointer.y <= temp_sprt->param.draw_end.y)
 	{
 		play_sound("./ressources/sounds/barrel_explosion.mp3", 1, full_conf);
 	}
