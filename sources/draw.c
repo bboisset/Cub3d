@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:48:51 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/02 15:36:58 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 16:52:57 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_raycast *param)
 		ft_memcpy(&data->data->data_img[index],
 			&c_texture.data_img[texy % TEXT_H *
 			c_texture.sizeline + texX % TEXT_H *
-			(c_texture.bpp >> 3)],3);
+			(c_texture.bpp >> 3)], sizeof(int));
 		y++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:36:42 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 16:25:54 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 16:45:57 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ void define_spt_draw_h(t_map_config *config, t_drw_spt	*param)
 						 config->resolution.x) ? config->resolution.x - 1 : param->draw_end.x;
 }
 
-static void is_sprite(t_map_config *config, t_display *camera,t_data *data, t_sprite_list *temp_sprt)
+static void is_sprite(t_display_config *display_config, t_sprite_list *temp_sprt)
 {
-	define_spt_draw_w(config, &temp_sprt->param);
-	define_spt_draw_h(config, &temp_sprt->param);
-	draw_stripe(&temp_sprt->param, config, data);
-	data->spt_info = temp_sprt->param;
+	define_spt_draw_w(D_CONFIG, &temp_sprt->param);
+	define_spt_draw_h(D_CONFIG, &temp_sprt->param);
+	draw_stripe(&temp_sprt->param, display_config);
+	D_DATA->spt_info = temp_sprt->param;
 }
 
 static void sprite_loop(t_display_config *display_config)
@@ -76,7 +76,7 @@ static void sprite_loop(t_display_config *display_config)
 	while (i < sprite_count)
 	{
 		temp_sprt->param = init_draw_sprite(D_CONFIG, D_CAM, temp_sprt->dimension);
-		is_sprite(D_CONFIG, D_CAM, D_DATA, temp_sprt);
+		is_sprite(display_config, temp_sprt);
 		temp_sprt = temp_sprt->next;
 		i++;
 	}
@@ -85,11 +85,8 @@ static void sprite_loop(t_display_config *display_config)
 void game_loop(t_display_config *display_config)
 {
 	floor_sky_cast(display_config);
-	//floor_sky_cast(D_CONFIG, D_CAM, D_DATA);
 	raycasting_loop(display_config);
-	//raycasting_loop(D_CONFIG, D_CAM, D_DATA);
 	sprite_loop(display_config);
-	//sprite_loop(D_CONFIG, D_CAM, D_DATA);
 	if (D_CONFIG->save_img != 1)
 		mlx_put_image_to_window(D_DATA->mlx_ptr, D_DATA->mlx_win, D_DATA->mlx_img, 0, 0);
 	D_DATA->loop_count++;

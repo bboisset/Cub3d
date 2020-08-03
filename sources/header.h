@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 16:30:15 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 16:37:27 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,8 +248,7 @@ void				game_loop(t_display_config *display_config);
 int					floor_sky_cast(t_display_config *display_config);
 void				draw_texture(int x,int texX, t_data *data, 
 	t_map_config *config,t_raycast *param);
-void 				draw_stripe(t_drw_spt *param, t_map_config *config,
-	t_data *data);
+void				draw_stripe(t_drw_spt *param, t_display_config *display_config);
 
 void 				draw_vertical_line(t_dimension start_pos, int y2, const int color, t_data *data);
 void 				draw_circle(int x, int y, int r, t_img_data *img);
