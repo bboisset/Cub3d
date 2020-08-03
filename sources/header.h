@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 18:59:54 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 20:07:02 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -319,4 +319,10 @@ t_sprite_list				*ft_sprt_lst_nw(int x, int y);
 void						ft_sprt_lst_back(t_sprite_list **a_sprt_lst,
 	t_sprite_list *new);
 int							ft_sprt_lstsize(t_sprite_list *lst);
+
+int							char_is_sprite(char *str, int i, int map_y,
+	t_map_config *config);
+int							inspect_line_end(char *str, t_map_config *config);
+void						char_is_player(t_map_config *config, char *str,
+	int i, int map_y);
 #endif

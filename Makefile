@@ -32,6 +32,7 @@ SRCS	=	sources/bitmap.c \
 			sources/utils.c \
 			sources/utils/assign_struct.c \
 			sources/utils/partials.c \
+			sources/utils/read_file_utils.c \
 			includes/get_next_line/get_next_line.c \
 			includes/get_next_line/get_next_line_utils.c
 

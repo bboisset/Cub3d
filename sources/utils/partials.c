@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:36:39 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 15:36:40 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 19:40:18 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int rgb_to_int(int r, int g, int b)
 int is_in_set(char c, const char *set)
 {
 	int i;
-	
+
 	i = 0;
 	while (set[i] != '\0')
 		if (c == set[i++])

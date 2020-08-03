@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:41 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 19:06:31 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 19:14:22 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	check_active_key(t_full_conf *full_conf)
 
 void	enable_minimap(t_full_conf *full_conf)
 {
-	full_conf->config->minimap_on = (full_conf->config->minimap_on == 1) ? 0 : 1;
+	full_conf->config->minimap_on =
+		(full_conf->config->minimap_on == 1) ? 0 : 1;
 	if (full_conf->config->minimap_on)
 		place_player(full_conf);
 	else

@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:36:49 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 17:46:30 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 19:17:40 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static int	compare_prev_and_next(char *prev, char *str)
 /*
 ** First and Last char wall, is already check before
 */
+
 int			check_map_wall(t_map_config *config)
 {
 	t_list	*temp_lst;
