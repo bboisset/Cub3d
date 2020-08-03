@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bboisset <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 17:39:17 by bboisset          #+#    #+#             */
-/*   Updated: 2019/10/14 17:39:52 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:24:46 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_lstsize(t_list *lst)
 {
 	int i;
-	
+
 	i = 0;
 	while (lst)
 	{

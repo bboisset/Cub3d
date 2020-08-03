@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bboisset <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 14:45:42 by bboisset          #+#    #+#             */
-/*   Updated: 2019/12/12 16:18:28 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:25:17 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ char				*ft_strrchr(const char *s, int c);
 char				*ft_strchr(const char *s, int c);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t				ft_strlcpy(char *restrict dst, const char *restrict src,
-							   size_t dstsize);
+	size_t dstsize);
 size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
 char				*ft_strnstr(const char *haystack, const char *needle,
-								size_t len);
+	size_t len);
 int					ft_atoi(const char *str);
 void				*ft_calloc(size_t count, size_t size);
 char				*ft_strdup(const char *s1);
@@ -59,8 +59,7 @@ char				**ft_split(char const *s, char c);
 char				*ft_itoa(int n);
 char				*ft_itoa_uint64_t(uint64_t n);
 char				*ft_strcpy(char *dst, const char *src);
-char				*ft_strmapi(char const *s, char (*f)(unsigned int,
-														 char));
+char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
