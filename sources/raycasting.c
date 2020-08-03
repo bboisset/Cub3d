@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:31 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 15:37:33 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 16:27:01 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,22 +105,22 @@ void define_wall(t_map_config *config, t_display *camera,t_data *data, int side,
 	}
 }
 
-int raycasting_loop(t_map_config *config, t_display *camera,t_data *data)
+int raycasting_loop(t_display_config *display_config)
 {
 	int x;
 	int side;
 	int texX;
 	t_raycast param;
-	
+
 	x = 0;
-	while (x < config->resolution.x)
+	while (x < D_CONFIG->resolution.x)
 	{
-		init_raycast(x, &param, camera, config);
-		side = wall_distance(&param, camera, config);
-		define_draw(&param, camera, config);
-		texX = define_text_x(side, x, config, camera, &param);
-		define_wall(config, camera, data, side, &param);
-		draw_texture(x, texX, data, config, &param);
+		init_raycast(x, &param, D_CAM, D_CONFIG);
+		side = wall_distance(&param, D_CAM, D_CONFIG);
+		define_draw(&param, D_CAM, D_CONFIG);
+		texX = define_text_x(side, x, D_CONFIG, D_CAM, &param);
+		define_wall(D_CONFIG, D_CAM, D_DATA, side, &param);
+		draw_texture(x, texX, D_DATA, D_CONFIG, &param);
 		x++;
 	}
 	return (0);

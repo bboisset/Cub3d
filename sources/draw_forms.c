@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:11 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 15:49:31 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 16:31:41 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,15 @@ void	draw_circle(int x, int y, int r, t_img_data *img)
 	}
 }
 
-void	draw_vertical_line(int x, int y1, int y2, const int color, t_data *data)
+void	draw_vertical_line(t_dimension start_pos, int y2,
+	const int color, t_data *data)
 {
 	int index;
+	int y1;
+	int x;
 
+	x = start_pos.x;
+	y1 = start_pos.y;
 	if (y1 < 0 || y2 < 0)
 		return;
 	if (y2 < y1){

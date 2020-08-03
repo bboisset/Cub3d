@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/02 22:19:42 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 16:30:15 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,19 +243,15 @@ int					read_map(char *str, t_map_config *config);
 int					load_textures(t_map_config *config, t_data *data);
 t_img_data			*load_textures_struct(void *img_ptr, t_map_config *config);
 
-int					raycasting_loop(t_map_config *config, t_display *camera, 
-	t_data *data);
-void 				game_loop(t_map_config *config, t_display *camera, 
-	t_data *data);
-int 				floor_sky_cast(t_map_config *config, t_display *camera, 
-	t_data *data);
+int					raycasting_loop(t_display_config *display_config);
+void				game_loop(t_display_config *display_config);
+int					floor_sky_cast(t_display_config *display_config);
 void				draw_texture(int x,int texX, t_data *data, 
 	t_map_config *config,t_raycast *param);
 void 				draw_stripe(t_drw_spt *param, t_map_config *config,
 	t_data *data);
 
-void 				draw_vertical_line(int x, int y1, int y2, const int color, 
-	t_data *data);
+void 				draw_vertical_line(t_dimension start_pos, int y2, const int color, t_data *data);
 void 				draw_circle(int x, int y, int r, t_img_data *img);
 void				fill_img(int x, int y, int color, t_img_data *img);
 

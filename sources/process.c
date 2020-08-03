@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 14:56:59 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 23:53:38 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 15:56:45 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int first_launch(t_map_config	*config)
 	config->step++;
 	if ((init_gun(display_config)) < 0)
 		return (full_error_d(display_config, 1, 3));
-	game_loop(config, camera, data);
+	game_loop(display_config);
 	if (mimimap(display_config) < 0)
 		return (full_error_d(display_config, 2, 3));
 	if (first_launch_end(display_config) == -1)

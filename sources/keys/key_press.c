@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:54:31 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/02 22:32:42 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 15:56:37 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void reload_scene(t_display_config *display_config, int gun_anim)
 {
-	game_loop(D_CONFIG, D_CAM,D_DATA);
+	game_loop(display_config);
 	place_player(display_config);
 	gun(display_config, gun_anim);
 }
