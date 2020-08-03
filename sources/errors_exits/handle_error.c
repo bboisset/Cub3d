@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:56 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 19:06:50 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 17:58:58 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ void free_textures(t_map_config	*config)
 	free(TEXTURE->west_texture_path);
 	free(TEXTURE->east_texture_path);
 	free(TEXTURE->sprite_texture_path);
-	if (TEXTURE->loadedTexture > 0)
+	if (TEXTURE->loaded_texture > 0)
 		free_image(TEXTURE->north_texture);
-	if (TEXTURE->loadedTexture > 1)
+	if (TEXTURE->loaded_texture > 1)
 		free_image(TEXTURE->south_texture);
-	if (TEXTURE->loadedTexture > 2)
+	if (TEXTURE->loaded_texture > 2)
 		free_image(TEXTURE->east_texture);
-	if (TEXTURE->loadedTexture > 3)
+	if (TEXTURE->loaded_texture > 3)
 		free_image(TEXTURE->west_texture);
-	if (TEXTURE->loadedTexture > 4)
+	if (TEXTURE->loaded_texture > 4)
 		free_image(TEXTURE->sprite_texture);
 	free(config->textures);
 }

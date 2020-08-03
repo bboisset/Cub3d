@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:48:51 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 16:52:57 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 18:03:52 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_img_data get_text_by_oritentation(t_map_config *config)
  * Draw wall with texture. With given x0/y0 to given xMax/yMax
  * Select texture to apply by player orientation N/S/E/W
  */
-void	draw_texture(int x, int texX, t_data *data, t_map_config *config,
+void	draw_texture(int x, int tex_x, t_data *data, t_map_config *config,
 t_raycast *param)
 {
 	int y;
@@ -48,7 +48,7 @@ t_raycast *param)
 		index = y * data->data->sizeline + (data->data->bpp >> 3) * x;
 		ft_memcpy(&data->data->data_img[index],
 			&c_texture.data_img[texy % TEXT_H *
-			c_texture.sizeline + texX % TEXT_H *
+			c_texture.sizeline + tex_x % TEXT_H *
 			(c_texture.bpp >> 3)], sizeof(int));
 		y++;
 	}

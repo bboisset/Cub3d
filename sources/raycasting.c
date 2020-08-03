@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:31 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 16:27:01 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 18:03:52 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ t_dimension	get_step(t_raycast *param, t_display *camera, t_map_config *config)
 	if (camera->dir.x < 0)
 	{
 		step.x = -1;
-		param->sideDistX = (camera->pos.x - param->mapX) * param->deltaDistX;
+		param->side_dist_x = (camera->pos.x - param->map_x) * param->delta_dist_x;
 	}
 	else
 	{
 		step.x = 1;
-		param->sideDistX = (param->mapX + 1.0 - camera->pos.x) * param->deltaDistX;
+		param->side_dist_x = (param->map_x + 1.0 - camera->pos.x) * param->delta_dist_x;
 	}
 	if (camera->dir.y < 0)
 	{
 		step.y = -1;
-		param->sideDistY = (camera->pos.y - param->mapY) * param->deltaDistY;
+		param->side_dist_y = (camera->pos.y - param->map_y) * param->delta_dist_y;
 	}
 	else
 	{
 		step.y = 1;
-		param->sideDistY = (param->mapY + 1.0 - camera->pos.y) * param->deltaDistY;
+		param->side_dist_y = (param->map_y + 1.0 - camera->pos.y) * param->delta_dist_y;
 	}
 	return (step);
 }
@@ -49,19 +49,19 @@ int loop_till_hit(int side, t_raycast *param, t_display *camera, t_map_config *c
 	hit = 0;
 	while (hit == 0)
 	{
-		if (param->sideDistX  < param->sideDistY)
+		if (param->side_dist_x  < param->side_dist_y)
 		{
-			param->sideDistX += param->deltaDistX;
-			param->mapX += step.x;
+			param->side_dist_x += param->delta_dist_x;
+			param->map_x += step.x;
 			side = 0;
 		}
 		else
 		{
-			param->sideDistY += param->deltaDistY;
-			param->mapY += step.y;
+			param->side_dist_y += param->delta_dist_y;
+			param->map_y += step.y;
 			side = 1;
 		}
-		if (config->map[param->mapX][param->mapY] - 48 == 1)
+		if (config->map[param->map_x][param->map_y] - 48 == 1)
 			hit = 1;
 	}
 	fish_eye(side, param, camera, step);
@@ -71,34 +71,34 @@ int loop_till_hit(int side, t_raycast *param, t_display *camera, t_map_config *c
 int define_text_x(int side, int x, t_map_config *config, t_display *camera, t_raycast *param)
 {
 	double	wallX;
-	int		texX;
+	int		tex_x;
 	
 	if (side == 0)
-		wallX = camera->pos.y + param->perpWallDist * camera->dir.y;
+		wallX = camera->pos.y + param->perp_wall_dist * camera->dir.y;
 	else
-		wallX = camera->pos.x + param->perpWallDist * camera->dir.x;
+		wallX = camera->pos.x + param->perp_wall_dist * camera->dir.x;
 	wallX -= floor((wallX));
-	config->ZBuffer[x] = param->perpWallDist;
-	texX = wallX * TEXT_W;
+	config->z_buffer[x] = param->perp_wall_dist;
+	tex_x = wallX * TEXT_W;
 	if(side == 0 && camera->dir.x > 0)
-		texX = TEXT_W - texX - 1;
+		tex_x = TEXT_W - tex_x - 1;
 	if(side == 1 && camera->dir.y < 0)
-		texX = TEXT_W - texX - 1;
-	return (texX);
+		tex_x = TEXT_W - tex_x - 1;
+	return (tex_x);
 }
 
 void define_wall(t_map_config *config, t_display *camera,t_data *data, int side, t_raycast *param)
 {
 	if (side == 1)
 	{
-		if (param->mapY < camera->pos.y)
+		if (param->map_y < camera->pos.y)
 			config->wall_dir = 'W';
 		else
 			config->wall_dir = 'E';
 	}
 	else
 	{
-		if (param->mapX < camera->pos.x)
+		if (param->map_x < camera->pos.x)
 			config->wall_dir = 'N';
 		else
 			config->wall_dir = 'S';
@@ -109,7 +109,7 @@ int raycasting_loop(t_display_config *display_config)
 {
 	int x;
 	int side;
-	int texX;
+	int tex_x;
 	t_raycast param;
 
 	x = 0;
@@ -118,9 +118,9 @@ int raycasting_loop(t_display_config *display_config)
 		init_raycast(x, &param, D_CAM, D_CONFIG);
 		side = wall_distance(&param, D_CAM, D_CONFIG);
 		define_draw(&param, D_CAM, D_CONFIG);
-		texX = define_text_x(side, x, D_CONFIG, D_CAM, &param);
+		tex_x = define_text_x(side, x, D_CONFIG, D_CAM, &param);
 		define_wall(D_CONFIG, D_CAM, D_DATA, side, &param);
-		draw_texture(x, texX, D_DATA, D_CONFIG, &param);
+		draw_texture(x, tex_x, D_DATA, D_CONFIG, &param);
 		x++;
 	}
 	return (0);

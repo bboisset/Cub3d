@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:11 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 17:45:15 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 17:59:47 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static void	draw_stripe_line(int x, t_drw_spt *param,
 	tex_dim.x = (int)(256 * (x - (-param->spt_dim.x / 2 + param->spt_scr_x)) *
 		SPRITE_W / param->spt_dim.x) / 256;
 	if (param->transform.y > 0 && x > 0 && x < D_CONFIG->resolution.x &&
-		param->transform.y < D_CONFIG->ZBuffer[x])
+		param->transform.y < D_CONFIG->z_buffer[x])
 	{
 		draw_stripe_line_loop(x, tex_dim, param, display_config);
 	}

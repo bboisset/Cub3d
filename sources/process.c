@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 14:56:59 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 15:56:45 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 17:59:46 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int first_launch(t_map_config	*config)
 		return (full_error(config, data, camera, 3));
 	if (!(display_config = join_display_config(camera, config, data)))
 		return (full_error(config, data, camera, 3));
-	if (!(config->ZBuffer = malloc(config->resolution.x * sizeof(double))))
+	if (!(config->z_buffer = malloc(config->resolution.x * sizeof(double))))
 		return (full_error_d(display_config, 0, 3));
 	config->step++;
 	if ((init_gun(display_config)) < 0)

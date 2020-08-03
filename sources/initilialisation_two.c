@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:13 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 17:35:54 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 17:59:03 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_texture	*init_textures(void)
 	textures->east_texture_path = NULL;
 	textures->west_texture_path = NULL;
 	textures->sprite_texture_path = NULL;
-	textures->loadedTexture = 0;
+	textures->loaded_texture = 0;
 	return (textures);
 }
 

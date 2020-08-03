@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:45 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 17:36:51 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 17:58:59 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_img_data	*load_textures_struct(void *img_ptr, t_map_config *config)
 		&img_data->sizeline, &img_data->endian);
 	img_data->temp = img_ptr;
 	if (config)
-		TEXTURE->loadedTexture += 1;
+		TEXTURE->loaded_texture += 1;
 	return (img_data);
 }
 

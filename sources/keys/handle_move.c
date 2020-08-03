@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:36:12 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 17:44:48 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 17:55:09 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	handle_go_up(t_display_config *display_config)
 {
 	display_config->key.up_active = 1;
 	if (D_CONFIG->map[(int)(D_CAM->pos.x + D_CONFIG->init_dir.x *
-		moveSpeed)][(int)D_CAM->pos.y] - 48 == 0)
-		D_CAM->pos.x += D_CONFIG->init_dir.x * moveSpeed;
+		MOVESPEED)][(int)D_CAM->pos.y] - 48 == 0)
+		D_CAM->pos.x += D_CONFIG->init_dir.x * MOVESPEED;
 	if (D_CONFIG->map[(int)D_CAM->pos.x][(int)(D_CAM->pos.y +
-		D_CONFIG->init_dir.y * moveSpeed)] - 48 == 0)
-		D_CAM->pos.y += D_CONFIG->init_dir.y * moveSpeed;
+		D_CONFIG->init_dir.y * MOVESPEED)] - 48 == 0)
+		D_CAM->pos.y += D_CONFIG->init_dir.y * MOVESPEED;
 	mlx_destroy_image(D_DATA->mlx_ptr, D_DATA->mlx_img);
 	D_DATA->mlx_img = mlx_new_image(D_DATA->mlx_ptr, D_CONFIG->resolution.x,
 		D_CONFIG->resolution.y);
@@ -31,11 +31,11 @@ void	handle_go_down(t_display_config *display_config)
 {
 	display_config->key.down_active = 1;
 	if (D_CONFIG->map[(int)(D_CAM->pos.x - D_CONFIG->init_dir.x *
-		moveSpeed)][(int)D_CAM->pos.y] - 48 == 0)
-		D_CAM->pos.x -= D_CONFIG->init_dir.x * moveSpeed;
+		MOVESPEED)][(int)D_CAM->pos.y] - 48 == 0)
+		D_CAM->pos.x -= D_CONFIG->init_dir.x * MOVESPEED;
 	if (D_CONFIG->map[(int)D_CAM->pos.x][(int)(D_CAM->pos.y -
-		D_CONFIG->init_dir.y * moveSpeed)] - 48 == 0)
-		D_CAM->pos.y -= D_CONFIG->init_dir.y * moveSpeed;
+		D_CONFIG->init_dir.y * MOVESPEED)] - 48 == 0)
+		D_CAM->pos.y -= D_CONFIG->init_dir.y * MOVESPEED;
 	mlx_destroy_image(D_DATA->mlx_ptr, D_DATA->mlx_img);
 	D_DATA->mlx_img = mlx_new_image(D_DATA->mlx_ptr,
 		D_CONFIG->resolution.x, D_CONFIG->resolution.y);
@@ -45,11 +45,11 @@ void	handle_go_down(t_display_config *display_config)
 void	handle_go_left(t_display_config *display_config)
 {
 	if (D_CONFIG->map[(int)(D_CAM->pos.x - D_CAM->fov.x *
-		moveSpeedSec)][(int)D_CAM->pos.y] - 48 == 0)
-		D_CAM->pos.x -= D_CAM->fov.x * moveSpeed;
+		MOVESPEEDSEC)][(int)D_CAM->pos.y] - 48 == 0)
+		D_CAM->pos.x -= D_CAM->fov.x * MOVESPEED;
 	if (D_CONFIG->map[(int)D_CAM->pos.x][(int)(D_CAM->pos.y - D_CAM->fov.y *
-		moveSpeedSec)] - 48 == 0)
-		D_CAM->pos.y -= D_CAM->fov.y * moveSpeed;
+		MOVESPEEDSEC)] - 48 == 0)
+		D_CAM->pos.y -= D_CAM->fov.y * MOVESPEED;
 	mlx_destroy_image(D_DATA->mlx_ptr, D_DATA->mlx_img);
 	D_DATA->mlx_img = mlx_new_image(D_DATA->mlx_ptr, D_CONFIG->resolution.x,
 		D_CONFIG->resolution.y);
@@ -59,11 +59,11 @@ void	handle_go_left(t_display_config *display_config)
 void	handle_go_right(t_display_config *display_config)
 {
 	if (D_CONFIG->map[(int)(D_CAM->pos.x + D_CAM->fov.x *
-		moveSpeedSec)][(int)D_CAM->pos.y] - 48 == 0)
-		D_CAM->pos.x += D_CAM->fov.x * moveSpeed;
+		MOVESPEEDSEC)][(int)D_CAM->pos.y] - 48 == 0)
+		D_CAM->pos.x += D_CAM->fov.x * MOVESPEED;
 	if (D_CONFIG->map[(int)D_CAM->pos.x][(int)(D_CAM->pos.y + D_CAM->fov.y *
-		moveSpeedSec)] - 48 == 0)
-		D_CAM->pos.y += D_CAM->fov.y * moveSpeed;
+		MOVESPEEDSEC)] - 48 == 0)
+		D_CAM->pos.y += D_CAM->fov.y * MOVESPEED;
 	mlx_destroy_image(D_DATA->mlx_ptr, D_DATA->mlx_img);
 	D_DATA->mlx_img = mlx_new_image(D_DATA->mlx_ptr, D_CONFIG->resolution.x,
 		D_CONFIG->resolution.y);
