@@ -6,20 +6,20 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:54:31 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 15:56:37 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 17:37:29 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-void reload_scene(t_display_config *display_config, int gun_anim)
+void	reload_scene(t_display_config *display_config, int gun_anim)
 {
 	game_loop(display_config);
 	place_player(display_config);
 	gun(display_config, gun_anim);
 }
 
-int handle_exit(t_display_config *display_config)
+int		handle_exit(t_display_config *display_config)
 {
 	system("killall afplay 2&>/dev/null >/dev/null\n");
 	exit_pr(display_config);
@@ -27,7 +27,7 @@ int handle_exit(t_display_config *display_config)
 	return (0);
 }
 
-int	key_press(int keycode, t_display_config *display_config)
+int		key_press(int keycode, t_display_config *display_config)
 {
 	if (keycode == 53)
 	{
@@ -52,7 +52,7 @@ int	key_press(int keycode, t_display_config *display_config)
 	return (0);
 }
 
-int key_realease(int keycode,  t_display_config *display_config)
+int		key_realease(int keycode,  t_display_config *display_config)
 {
 	if (keycode == 13)
 		display_config->key.up_active = 0;

@@ -6,16 +6,16 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:13 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 23:41:15 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 17:35:54 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-static t_texture *init_textures(void)
+static t_texture	*init_textures(void)
 {
 	t_texture		*textures;
-	
+
 	if (!(textures = (t_texture*)malloc(sizeof(t_texture))))
 		return (NULL);
 	textures->north_texture_path = NULL;
@@ -27,29 +27,29 @@ static t_texture *init_textures(void)
 	return (textures);
 }
 
-static t_rgb_color init_rgb_color(void)
+static t_rgb_color	init_rgb_color(void)
 {
 	t_rgb_color color;
-	
+
 	color.red = 0;
 	color.green = 0;
 	color.blue = 0;
 	return (color);
 }
 
-t_dimension	init_dimensions(void)
+t_dimension			init_dimensions(void)
 {
 	t_dimension		resolution;
-	
+
 	resolution.x = (double)0;
 	resolution.y = (double)0;
 	return (resolution);
 }
 
-t_map_config	*init_config(void)
+t_map_config		*init_config(void)
 {
 	t_map_config	*new_config;
-	
+
 	if (!(new_config = (t_map_config*)malloc(sizeof(t_map_config))))
 		return (NULL);
 	new_config->resolution = init_dimensions();
@@ -69,10 +69,10 @@ t_map_config	*init_config(void)
 	return (new_config);
 }
 
-t_display		*init_display(t_map_config *config)
+t_display			*init_display(t_map_config *config)
 {
 	t_display *display;
-	
+
 	if (!(display = (t_display*)malloc(sizeof(t_display))))
 		return (NULL);
 	display->fov = init_dimensions();
