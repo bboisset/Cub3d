@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:56 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 21:26:44 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 21:41:16 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int			main_error(int code)
 	return (-1);
 }
 
-static void	free_textures_path(t_map_config	*config)
+static void	free_textures_path(t_map_config *config)
 {
 	free(config->textures->north_texture_path);
 	free(config->textures->south_texture_path);
@@ -27,7 +27,7 @@ static void	free_textures_path(t_map_config	*config)
 	free(config->textures->sprite_texture_path);
 }
 
-void		free_textures(t_map_config	*config)
+void		free_textures(t_map_config *config)
 {
 	free_textures_path(config);
 	if (config->textures->loaded_texture > 0)
@@ -43,7 +43,7 @@ void		free_textures(t_map_config	*config)
 	free(config->textures);
 }
 
-int			texture_error(t_map_config	*config)
+int			texture_error(t_map_config *config)
 {
 	free_textures(config);
 	return (-1);

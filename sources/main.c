@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:56:04 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 21:34:02 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 21:54:12 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int	read_argument(const char *argument, t_map_config *config)
 	return (-1);
 }
 
-int	main(int argc, const char * argv[])
+int	main(int argc, const char *argv[])
 {
 	int					fd;
 	int					res;
 	int					launch_res;
-	t_map_config 		*config;
+	t_map_config		*config;
 
 	if (!(config = init_config()))
 		return (main_error(3));
@@ -36,11 +36,11 @@ int	main(int argc, const char * argv[])
 			return (map_error(config, 0));
 	if (argc == 2 || argc == 3)
 	{
-		if (!(fd = open(argv[1], O_RDONLY)))
+		if (!(fd = open(argv[1], O_RDONLY)))./
 			return (map_error(config, 1));
 		if ((res = read_file(fd, config)) == -1)
 			return (map_error(config, 1));
-		if (launch_res = first_launch(config) != 0)
+		if ((launch_res = first_launch(config)) != 0)
 			return (launch_res);
 	}
 	else

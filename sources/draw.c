@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:48:51 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 21:20:40 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 21:39:52 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,13 @@ t_img_data	get_text_by_oritentation(t_map_config *config)
 ** Select texture to apply by player orientation N/S/E/W
 */
 
-void		draw_texture(int x, int tex_x, t_full_conf *full_conf, t_raycast *param)
+void		draw_texture(int x, int tex_x, t_full_conf *full_conf,
+	t_raycast *param)
 {
-	int y;
-	int texy;
-	int index;
-	t_img_data c_texture;
+	int			y;
+	int			texy;
+	int			index;
+	t_img_data 	c_texture;
 
 	c_texture = get_text_by_oritentation(full_conf->config);
 	full_conf->data->data->data_img = mlx_get_data_addr(

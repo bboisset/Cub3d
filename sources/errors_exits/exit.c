@@ -6,13 +6,13 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:30 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 19:01:20 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 21:42:55 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-void free_config(t_map_config *config)
+void	free_config(t_map_config *config)
 {
 	int i;
 
@@ -33,7 +33,7 @@ void free_config(t_map_config *config)
 	free(config);
 }
 
-void free_gun(t_gun	*gun)
+void	free_gun(t_gun *gun)
 {
 	free(gun->img->data_img);
 	free(gun->img->temp);
@@ -41,7 +41,7 @@ void free_gun(t_gun	*gun)
 	free(gun);
 }
 
-void free_minimap(t_minimap *minimap, int type)
+void	free_minimap(t_minimap *minimap, int type)
 {
 	if (type > 0)
 	{
@@ -55,7 +55,7 @@ void free_minimap(t_minimap *minimap, int type)
 	free(minimap);
 }
 
-void free_data(t_data *data)
+void	free_data(t_data *data)
 {
 	mlx_destroy_window(data->mlx_ptr, data->mlx_win);
 	free(data->mlx_img);
@@ -64,7 +64,7 @@ void free_data(t_data *data)
 	free(data);
 }
 
-int exit_pr(t_full_conf *full_conf)
+int		exit_pr(t_full_conf *full_conf)
 {
 	free(full_conf->camera);
 	free_config(full_conf->config);

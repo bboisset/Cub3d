@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:36:39 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 20:21:13 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 21:39:17 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_color(int red, int green, int blue)
 {
-	return (red >= 0 && red  <= 255 && green >= 0 && green <= 255 &&
+	return (red >= 0 && red <= 255 && green >= 0 && green <= 255 &&
 		blue >= 0 && blue <= 255) ? 0 : -9;
 }
 

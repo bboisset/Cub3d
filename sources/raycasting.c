@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:31 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 21:18:08 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 21:48:46 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ t_dimension	get_step(t_raycast *param, t_display *camera, t_map_config *config)
 	return (step);
 }
 
-
-int loop_till_hit(int side, t_raycast *param, t_display *camera, t_map_config *config)
+int		loop_till_hit(int side, t_raycast *param, t_display *camera,
+	t_map_config *config)
 {
-	int hit;
-	t_dimension step;
+	int			hit;
+	t_dimension	step;
 
 	step = get_step(param, camera, config);
 	hit = 0;
@@ -68,7 +68,8 @@ int loop_till_hit(int side, t_raycast *param, t_display *camera, t_map_config *c
 	return (side);
 }
 
-int define_text_x(int side, int x, t_map_config *config, t_display *camera, t_raycast *param)
+int		define_text_x(int side, int x, t_map_config *config, t_display *camera,
+	t_raycast *param)
 {
 	double	wallX;
 	int		tex_x;
@@ -87,30 +88,30 @@ int define_text_x(int side, int x, t_map_config *config, t_display *camera, t_ra
 	return (tex_x);
 }
 
-void define_wall(t_map_config *config, t_display *camera,t_data *data, int side, t_raycast *param)
+void	define_wall(t_full_conf *full_conf, int side, t_raycast *param)
 {
 	if (side == 1)
 	{
-		if (param->map_y < camera->pos.y)
-			config->wall_dir = 'W';
+		if (param->map_y < full_conf->camera->pos.y)
+			full_conf->config->wall_dir = 'W';
 		else
-			config->wall_dir = 'E';
+			full_conf->config->wall_dir = 'E';
 	}
 	else
 	{
-		if (param->map_x < camera->pos.x)
-			config->wall_dir = 'N';
+		if (param->map_x < full_conf->camera->pos.x)
+			full_conf->config->wall_dir = 'N';
 		else
-			config->wall_dir = 'S';
+			full_conf->config->wall_dir = 'S';
 	}
 }
 
-int raycasting_loop(t_full_conf *full_conf)
+int		raycasting_loop(t_full_conf *full_conf)
 {
-	int x;
-	int side;
-	int tex_x;
-	t_raycast param;
+	int		x;
+	int			side;
+	int			tex_x;
+	t_raycast	param;
 
 	x = 0;
 	while (x < full_conf->config->res.x)
@@ -120,8 +121,7 @@ int raycasting_loop(t_full_conf *full_conf)
 		define_draw(&param, full_conf->camera, full_conf->config);
 		tex_x = define_text_x(side, x, full_conf->config, full_conf->camera,
 			&param);
-		define_wall(full_conf->config, full_conf->camera, full_conf->data, side,
-			&param);
+		define_wall(full_conf, side, &param);
 		draw_texture(x, tex_x, full_conf, &param);
 		x++;
 	}

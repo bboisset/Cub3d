@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:57:42 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 21:36:33 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 21:44:09 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		fill_string(char *str, char c, int length)
 
 static int	create_temp_map(t_map_config *config, char ***temp_map)
 {
-	int 	i;
+	int		i;
 	int		j;
 	char	**ptr_temp_map;
 	t_list	*temp_lst;

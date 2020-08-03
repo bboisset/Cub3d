@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:58:17 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 21:37:51 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 21:45:36 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int			ft_edit_atoi(const char *str, int start)
 	return (number);
 }
 
-
 char		*ft_strtrim_all(char const *s1, char const *set)
 {
 	int		i;
@@ -48,7 +47,7 @@ char		*ft_strtrim_all(char const *s1, char const *set)
 			to_rm++;
 		i++;
 	}
-	if(!(new_str = malloc((i - to_rm + 1) * sizeof(char))))
+	if (!(new_str = malloc((i - to_rm + 1) * sizeof(char))))
 		return (NULL);
 	i = 0;
 	while (s1[i] != '\0')
@@ -94,7 +93,8 @@ int			get_post_wo_spaces(char *str, char *set, int max)
 	return (res);
 }
 
-static void define_direction_two(char c, t_map_config *config, t_display *camera)
+static void	define_direction_two(char c, t_map_config *config,
+	t_display *camera)
 {
 	if (c == 'S')
 	{
