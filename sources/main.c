@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:56:04 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 21:54:12 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 21:56:37 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, const char *argv[])
 			return (map_error(config, 0));
 	if (argc == 2 || argc == 3)
 	{
-		if (!(fd = open(argv[1], O_RDONLY)))./
+		if (!(fd = open(argv[1], O_RDONLY)))
 			return (map_error(config, 1));
 		if ((res = read_file(fd, config)) == -1)
 			return (map_error(config, 1));
