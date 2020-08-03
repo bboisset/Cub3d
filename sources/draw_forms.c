@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:11 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 18:59:41 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 19:12:04 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,13 @@ void		draw_stripe_line_loop(int x, t_dimension tex_dim, t_drw_spt *param,
 	while (y < param->draw_end.y)
 	{
 		d = (y - param->v_screen_move) * 256 - full_conf->config->res.y * 128 +
-		param->spt_dim.y * 128;
+			param->spt_dim.y * 128;
 		tex_dim.y = (int)((d * SPRITE_H) / param->spt_dim.y) / 256;
-		index = (x * (full_conf->data->data->bpp >> 3)) + (y * full_conf->data->data->sizeline);
-		index_sprt = ((int)tex_dim.x * full_conf->config->textures->sprite_texture->bpp
-		>> 3) + ((int)tex_dim.y * full_conf->config->textures->sprite_texture->sizeline);
+		index = (x * (full_conf->data->data->bpp >> 3)) + (y *
+			full_conf->data->data->sizeline);
+		index_sprt = ((int)tex_dim.x *
+		full_conf->config->textures->sprite_texture->bpp >> 3) +((int)tex_dim.y
+		* full_conf->config->textures->sprite_texture->sizeline);
 		if (full_conf->config->textures->sprite_texture->data_img[index_sprt] != 0)
 		{
 			ft_memcpy(&full_conf->data->data->data_img[index],
