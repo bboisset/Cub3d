@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:49 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/02 22:14:46 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 19:06:45 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ t_data			*init_data(t_map_config *config)
 		return (NULL);
 	if ((data->mlx_ptr = mlx_init()) == NULL)
 		return (NULL);
-	if ((data->mlx_win = mlx_new_window(data->mlx_ptr, config->resolution.x,
-		config->resolution.y, "Cub3D")) == NULL)
+	if ((data->mlx_win = mlx_new_window(data->mlx_ptr, config->res.x,
+		config->res.y, "Cub3D")) == NULL)
 		return (NULL);
-	if ((data->mlx_img = mlx_new_image(data->mlx_ptr, config->resolution.x,
-		config->resolution.y)) == NULL)
+	if ((data->mlx_img = mlx_new_image(data->mlx_ptr, config->res.x,
+		config->res.y)) == NULL)
 		return (NULL);
 	if (!(data->data = init_img_data(data)))
 		return (NULL);
@@ -52,16 +52,16 @@ t_data			*init_data(t_map_config *config)
 	return (data);
 }
 
-t_display_config	*join_display_config(t_display *display, 
+t_full_conf	*join_full_conf(t_display *display, 
 	t_map_config *config,t_data *data)
 {
-	t_display_config *display_config;
+	t_full_conf *full_conf;
 	
-	if (!(display_config = (t_display_config*)malloc(sizeof(t_display_config))))
+	if (!(full_conf = (t_full_conf*)malloc(sizeof(t_full_conf))))
 		return (NULL);
-	display_config->config = config;
-	display_config->camera = display;
-	display_config->data = data;
-	display_config->key = init_active_key();
-	return (display_config);
+	full_conf->config = config;
+	full_conf->camera = display;
+	full_conf->data = data;
+	full_conf->key = init_active_key();
+	return (full_conf);
 }

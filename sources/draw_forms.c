@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:11 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 17:59:47 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 18:59:41 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void		draw_vertical_line(t_dimension start_pos, int y2,
 }
 
 void		draw_stripe_line_loop(int x, t_dimension tex_dim, t_drw_spt *param,
-	t_display_config *display_config)
+	t_full_conf *full_conf)
 {
 	int y;
 	int d;
@@ -70,16 +70,16 @@ void		draw_stripe_line_loop(int x, t_dimension tex_dim, t_drw_spt *param,
 	y = param->draw_start.y;
 	while (y < param->draw_end.y)
 	{
-		d = (y - param->v_screen_move) * 256 - D_CONFIG->resolution.y * 128 +
+		d = (y - param->v_screen_move) * 256 - full_conf->config->res.y * 128 +
 		param->spt_dim.y * 128;
 		tex_dim.y = (int)((d * SPRITE_H) / param->spt_dim.y) / 256;
-		index = (x * (D_DATA->data->bpp >> 3)) + (y * D_DATA->data->sizeline);
-		index_sprt = ((int)tex_dim.x * D_CONFIG->textures->sprite_texture->bpp
-		>> 3) + ((int)tex_dim.y * D_CONFIG->textures->sprite_texture->sizeline);
-		if (D_CONFIG->textures->sprite_texture->data_img[index_sprt] != 0)
+		index = (x * (full_conf->data->data->bpp >> 3)) + (y * full_conf->data->data->sizeline);
+		index_sprt = ((int)tex_dim.x * full_conf->config->textures->sprite_texture->bpp
+		>> 3) + ((int)tex_dim.y * full_conf->config->textures->sprite_texture->sizeline);
+		if (full_conf->config->textures->sprite_texture->data_img[index_sprt] != 0)
 		{
-			ft_memcpy(&D_DATA->data->data_img[index],
-			&D_CONFIG->textures->sprite_texture->data_img[index_sprt],
+			ft_memcpy(&full_conf->data->data->data_img[index],
+			&full_conf->config->textures->sprite_texture->data_img[index_sprt],
 			sizeof(int));
 		}
 		y++;
@@ -87,32 +87,32 @@ void		draw_stripe_line_loop(int x, t_dimension tex_dim, t_drw_spt *param,
 }
 
 static void	draw_stripe_line(int x, t_drw_spt *param,
-	t_display_config *display_config)
+	t_full_conf *full_conf)
 {
 	t_dimension tex_dim;
 
 	tex_dim.x = (int)(256 * (x - (-param->spt_dim.x / 2 + param->spt_scr_x)) *
 		SPRITE_W / param->spt_dim.x) / 256;
-	if (param->transform.y > 0 && x > 0 && x < D_CONFIG->resolution.x &&
-		param->transform.y < D_CONFIG->z_buffer[x])
+	if (param->transform.y > 0 && x > 0 && x < full_conf->config->res.x &&
+		param->transform.y < full_conf->config->z_buffer[x])
 	{
-		draw_stripe_line_loop(x, tex_dim, param, display_config);
+		draw_stripe_line_loop(x, tex_dim, param, full_conf);
 	}
 }
 
-void		draw_stripe(t_drw_spt *param, t_display_config *display_config)
+void		draw_stripe(t_drw_spt *param, t_full_conf *full_conf)
 {
 	int x;
 
 	x = param->draw_start.x;
-	D_CONFIG->textures->sprite_texture->data_img =
-		mlx_get_data_addr(D_CONFIG->textures->sprite_texture->temp,
-		&D_CONFIG->textures->sprite_texture->bpp,
-		&D_CONFIG->textures->sprite_texture->sizeline,
-		&D_CONFIG->textures->sprite_texture->endian);
+	full_conf->config->textures->sprite_texture->data_img =
+		mlx_get_data_addr(full_conf->config->textures->sprite_texture->temp,
+		&full_conf->config->textures->sprite_texture->bpp,
+		&full_conf->config->textures->sprite_texture->sizeline,
+		&full_conf->config->textures->sprite_texture->endian);
 	while (x < param->draw_end.x)
 	{
-		draw_stripe_line(x, param, display_config);
+		draw_stripe_line(x, param, full_conf);
 		x++;
 	}
 }

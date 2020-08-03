@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:36:33 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 15:36:35 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 18:47:11 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,16 +92,16 @@ int assign_resolutions(char *str, t_map_config *config)
 	i = 1;
 	while (str[i] == ' ')
 		i++;
-	config->resolution.x = (double)ft_edit_atoi(str, i);
+	config->res.x = (double)ft_edit_atoi(str, i);
 	while (ft_isdigit(str[i]))
 		i++;
-	config->resolution.y = (double)ft_edit_atoi(str, i);
+	config->res.y = (double)ft_edit_atoi(str, i);
 	i++;
 	while (ft_isdigit(str[i]))
 		i++;
 	if (str[i++] != '\0')
 		return (-6);
-	config->resolution.x = config->resolution.x > SCREEN_MAX_W ? SCREEN_MAX_W : config->resolution.x;
-	config->resolution.y = config->resolution.y > SCREEN_MAX_H ? SCREEN_MAX_H : config->resolution.y;
-	return ((config->resolution.x > 0 && config->resolution.y > 0) ? 0 : -7);
+	config->res.x = config->res.x > SCREEN_MAX_W ? SCREEN_MAX_W : config->res.x;
+	config->res.y = config->res.y > SCREEN_MAX_H ? SCREEN_MAX_H : config->res.y;
+	return ((config->res.x > 0 && config->res.y > 0) ? 0 : -7);
 }

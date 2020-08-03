@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 18:05:44 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 18:59:54 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,6 @@
 # define SCREEN_MAX_W 2560
 # define SCREEN_MAX_H 1440
 # define PI 3.1415926535
-# define D_CONFIG display_config->config
-# define D_CAM display_config->camera
-# define D_DATA display_config->data
-# define MAP config->map
-# define MINIMAP display_config->minimap
-# define GUN display_config->gun
-# define TEXTURE config->textures
 # include <stdlib.h>
 # include <fcntl.h>
 # include <math.h>
@@ -72,8 +65,7 @@ typedef struct				s_minimap
 {
 	int						cub_sz;
 	int						cub_color;
-	int						y_width;
-	int						x_width;
+	t_dimension				dim;
 	t_img_data				*data;
 	t_img_data				*player_icon;
 }							t_minimap;
@@ -129,8 +121,8 @@ typedef struct				s_sprite_list
 
 typedef struct				s_map_config
 {
-	t_dimension				resolution;
-	t_dimension				map_width;
+	t_dimension				res;
+	t_dimension				map_w;
 	t_dimension				init_dir;
 	t_dimension				init_pos;
 	t_dimension				init_sprite_pos;
@@ -170,7 +162,7 @@ typedef struct				s_data
 	t_drw_spt				spt_info;
 }							t_data;
 
-typedef struct				s_display_config
+typedef struct				s_full_conf
 {
 	t_display				*camera;
 	t_map_config			*config;
@@ -178,7 +170,7 @@ typedef struct				s_display_config
 	t_minimap				*minimap;
 	t_gun					*gun;
 	t_active_action			key;
-}							t_display_config;
+}							t_full_conf;
 
 typedef struct				s_raycast
 {
@@ -200,20 +192,20 @@ int							config_error(char *str);
 int							get_post_wo_spaces(char *str, char *set, int max);
 
 t_data						*init_data(t_map_config *config);
-t_display_config			*join_display_config(t_display *display,
+t_full_conf					*join_full_conf(t_display *display,
 	t_map_config *config, t_data *data);
 
 t_dimension					init_dimensions(void);
 t_map_config				*init_config(void);
 t_display					*init_display(t_map_config *config);
 
-int							init_gun(t_display_config *display_config);
-int							init_icon_player(t_display_config *display_config);
-int							init_minimap(t_display_config *display_config);
+int							init_gun(t_full_conf *full_conf);
+int							init_icon_player(t_full_conf *full_conf);
+int							init_minimap(t_full_conf *full_conf);
 
 void						play_sound(char *path, int volume,
-	t_display_config	*display_config);
-void						sprite_in_front(t_display_config *display_config,
+	t_full_conf	*full_conf);
+void						sprite_in_front(t_full_conf *full_conf,
 	t_sprite_list *temp_sprt);
 
 int							ft_edit_atoi(const char *str, int start);
@@ -227,23 +219,23 @@ int							assign_ground(char *str, t_map_config *config);
 int							assign_sky(char *str, t_map_config *config);
 int							assign_resolutions(char *str, t_map_config *config);
 
-void						handle_go_up(t_display_config *display_config);
-void						handle_go_down(t_display_config *display_config);
-void						handle_go_left(t_display_config *display_config);
-void						handle_go_right(t_display_config *display_config);
+void						handle_go_up(t_full_conf *full_conf);
+void						handle_go_down(t_full_conf *full_conf);
+void						handle_go_left(t_full_conf *full_conf);
+void						handle_go_right(t_full_conf *full_conf);
 
-void						handle_cam_right(t_display_config *display_config);
-void						handle_cam_left(t_display_config *display_config);
+void						handle_cam_right(t_full_conf *full_conf);
+void						handle_cam_left(t_full_conf *full_conf);
 
-void						reload_scene(t_display_config *display_config,
+void						reload_scene(t_full_conf *full_conf,
 	int gun_anim);
 
 int							key_press(int keycode,
-	t_display_config *display_config);
-int							handle_exit(t_display_config *display_config);
+	t_full_conf *full_conf);
+int							handle_exit(t_full_conf *full_conf);
 int							key_realease(int keycode,
-	t_display_config *display_config);
-void						check_active_key(t_display_config *display_config);
+	t_full_conf *full_conf);
+void						check_active_key(t_full_conf *full_conf);
 
 int							read_map(char *str, t_map_config *config);
 
@@ -251,28 +243,28 @@ int							load_textures(t_map_config *config, t_data *data);
 t_img_data					*load_textures_struct(void *img_ptr,
 	t_map_config *config);
 
-int							raycasting_loop(t_display_config *display_config);
-void						game_loop(t_display_config *display_config);
-int							floor_sky_cast(t_display_config *display_config);
+int							raycasting_loop(t_full_conf *full_conf);
+void						game_loop(t_full_conf *full_conf);
+int							floor_sky_cast(t_full_conf *full_conf);
 void						draw_texture(int x, int tex_x, t_data *data,
 	t_map_config *config, t_raycast *param);
 void						draw_stripe(t_drw_spt *param,
-	t_display_config *display_config);
+	t_full_conf *full_conf);
 
-void 						draw_vertical_line(t_dimension start_pos, int y2,
+void						draw_vertical_line(t_dimension start_pos, int y2,
 	const int color, t_data *data);
 void						draw_circle(int x, int y, int r, t_img_data *img);
 void						fill_img(int x, int y, int color, t_img_data *img);
 
-int 						mimimap(t_display_config *display_config);
-void						place_player(t_display_config *display_config);
+int							mimimap(t_full_conf *full_conf);
+void						place_player(t_full_conf *full_conf);
 
 int							rgb_to_int(int r, int g, int b);
 int							check_color(int red, int green, int blue);
 int							is_in_set(char c, const char *set);
 int							last_char_is_wall(char *str);
 
-int							gun(t_display_config *display_config,
+int							gun(t_full_conf *full_conf,
 	int animation);
 
 void						fish_eye(int side, t_raycast *param,
@@ -291,7 +283,7 @@ void						free_textures(t_map_config	*config);
 void						free_data(t_data *data);
 void						free_image(t_img_data *img_data);
 int							texture_error(t_map_config	*config);
-int							full_error_d(t_display_config *display_config,
+int							full_error_d(t_full_conf *full_conf,
 	int type, int code);
 int							full_error(t_map_config *config, t_data *data,
 	t_display *display, int code);
@@ -304,7 +296,7 @@ int							cam_mall_err(t_map_config *config,
 
 void						code_error(int code);
 
-int							exit_pr(t_display_config *display_config);
+int							exit_pr(t_full_conf *full_conf);
 void						free_gun(t_gun *gun);
 void						free_minimap(t_minimap *minimap, int type);
 
@@ -315,9 +307,9 @@ int							create_bitmap(t_map_config *config,
 
 int							first_launch(t_map_config	*config);
 
-void						fire(t_display_config *display_config);
+void						fire(t_full_conf *full_conf);
 
-void						enable_minimap(t_display_config *display_config);
+void						enable_minimap(t_full_conf *full_conf);
 
 void						free_config(t_map_config *config);
 

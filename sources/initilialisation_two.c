@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:13 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 17:59:03 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 18:50:52 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ static t_rgb_color	init_rgb_color(void)
 
 t_dimension			init_dimensions(void)
 {
-	t_dimension		resolution;
+	t_dimension		dimensions;
 
-	resolution.x = (double)0;
-	resolution.y = (double)0;
-	return (resolution);
+	dimensions.x = (double)0;
+	dimensions.y = (double)0;
+	return (dimensions);
 }
 
 t_map_config		*init_config(void)
@@ -52,8 +52,8 @@ t_map_config		*init_config(void)
 
 	if (!(new_config = (t_map_config*)malloc(sizeof(t_map_config))))
 		return (NULL);
-	new_config->resolution = init_dimensions();
-	new_config->map_width = init_dimensions();
+	new_config->res = init_dimensions();
+	new_config->map_w = init_dimensions();
 	new_config->init_dir = init_dimensions();
 	new_config->init_pos = init_dimensions();
 	new_config->textures = init_textures();

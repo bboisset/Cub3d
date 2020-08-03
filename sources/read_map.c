@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:57:42 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/02 18:23:01 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 18:50:50 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ static int	create_temp_map(t_map_config *config, char ***temp_map)
 	i = 0;
 	ptr_temp_map = *temp_map;
 	temp_lst = config->temp_map;
-	while (i < config->map_width.y)
+	while (i < config->map_w.y)
 	{
-		if (!(ptr_temp_map[i] = malloc(sizeof(char) * (config->map_width.x + 1))))
+		if (!(ptr_temp_map[i] = malloc(sizeof(char) * (config->map_w.x + 1))))
 			return (-1);
 		ft_strcpy(ptr_temp_map[i], temp_lst->content);
 		j = ft_strlen(temp_lst->content);
-		while (j < config->map_width.x)
+		while (j < config->map_w.x)
 			ptr_temp_map[i][j++] = '1';
 		ptr_temp_map[i][j] = '\0';
 		temp_lst = temp_lst->next;
@@ -60,33 +60,33 @@ static int switch_temp_to_map(t_map_config *config, char ***temp_map)
 	i = 0;
 	k = 0;
 	ptr_temp_map = *temp_map;
-	while (i < config->map_width.x)
+	while (i < config->map_w.x)
 	{
 		j = 0;
-		if (!(MAP[i] = malloc(sizeof(char) * (config->map_width.y + 1))))
-			return (temp_map_switcher_error(MAP, i, ptr_temp_map));
-		while (j < config->map_width.y)
+		if (!(config->map[i] = malloc(sizeof(char) * (config->map_w.y + 1))))
+			return (temp_map_switcher_error(config->map, i, ptr_temp_map));
+		while (j < config->map_w.y)
 		{
-			MAP[i][j] = ptr_temp_map[j][i];
+			config->map[i][j] = ptr_temp_map[j][i];
 			j++;
 		}
 		i++;
 	}
-	while (k < config->map_width.y)
+	while (k < config->map_w.y)
 		free(ptr_temp_map[k++]);
 	free(ptr_temp_map);
 	return (0);
 }
 
-/**
- * Define map Height; Allocate a string of map width length for transfer data
- */
+/*
+** Define map Height; Allocate a string of map width length for transfer data
+*/
 int read_map(char *str, t_map_config *config)
 {
 	char **temp_map;
 	
-	config->map_width.y = ft_lstsize(config->temp_map);
-	if (!(MAP = malloc(sizeof(char*) * config->map_width.x)) || !(temp_map = malloc(sizeof(char*) * config->map_width.y)))
+	config->map_w.y = ft_lstsize(config->temp_map);
+	if (!(config->map = malloc(sizeof(char*) * config->map_w.x)) || !(temp_map = malloc(sizeof(char*) * config->map_w.y)))
 		return (-1);
 	config->step++;
 	if ((create_temp_map(config, &temp_map) == -1))

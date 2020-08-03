@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:48:51 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 18:03:52 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 18:45:29 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 t_img_data get_text_by_oritentation(t_map_config *config)
 {
 	if (config->wall_dir == 'N')
-		return (*TEXTURE->north_texture);
+		return (*config->textures->north_texture);
 	else if (config->wall_dir == 'S')
-		return (*TEXTURE->south_texture);
+		return (*config->textures->south_texture);
 	else if (config->wall_dir == 'E')
-		return (*TEXTURE->east_texture);
+		return (*config->textures->east_texture);
 	else if (config->wall_dir == 'W')
-		return (*TEXTURE->west_texture);
-	return (*TEXTURE->north_texture);
+		return (*config->textures->west_texture);
+	return (*config->textures->north_texture);
 }
 
 /**
@@ -43,7 +43,7 @@ t_raycast *param)
 	y = param->draw.draw_start;
 	while (y < param->draw.draw_end)
 	{
-		texy = fabs((((y * 256 - config->resolution.y * 128 +
+		texy = fabs((((y * 256 - config->res.y * 128 +
 			param->line_height * 128) * TEXT_H) / param->line_height) / 256);
 		index = y * data->data->sizeline + (data->data->bpp >> 3) * x;
 		ft_memcpy(&data->data->data_img[index],

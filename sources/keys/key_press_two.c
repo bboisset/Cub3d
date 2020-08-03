@@ -6,25 +6,25 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:55:41 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 17:37:15 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 19:06:31 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-void	check_active_key(t_display_config *display_config)
+void	check_active_key(t_full_conf *full_conf)
 {
-	if (display_config->key.up_active == 1)
-		handle_go_up(display_config);
-	else if (display_config->key.down_active == 1)
-		handle_go_down(display_config);
+	if (full_conf->key.up_active == 1)
+		handle_go_up(full_conf);
+	else if (full_conf->key.down_active == 1)
+		handle_go_down(full_conf);
 }
 
-void	enable_minimap(t_display_config *display_config)
+void	enable_minimap(t_full_conf *full_conf)
 {
-	D_CONFIG->minimap_on = (D_CONFIG->minimap_on == 1) ? 0 : 1;
-	if (D_CONFIG->minimap_on)
-		place_player(display_config);
+	full_conf->config->minimap_on = (full_conf->config->minimap_on == 1) ? 0 : 1;
+	if (full_conf->config->minimap_on)
+		place_player(full_conf);
 	else
-		reload_scene(display_config, 0);
+		reload_scene(full_conf, 0);
 }

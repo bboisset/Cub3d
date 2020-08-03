@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:36:45 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 15:43:02 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 18:45:09 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ int			create_bitmap(t_map_config *config, t_img_data *data)
 		config->config_error = -11;
 		return (-11);
 	}
-	data->dimension.x = config->resolution.x;
-	data->dimension.y = config->resolution.y;
-	file_size = 54 + (config->resolution.x * config->resolution.y) * 4;
+	data->dimension.x = config->res.x;
+	data->dimension.y = config->res.y;
+	file_size = 54 + (config->res.x * config->res.y) * 4;
 	bitmap_header(file_size, fd, data);
 	write_data(data, fd);
 	close(fd);

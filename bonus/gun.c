@@ -6,88 +6,89 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:49:38 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/02 21:54:22 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 18:56:30 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../sources/header.h"
 
-void sprite_in_front_loop(t_display_config *display_config)
+void sprite_in_front_loop(t_full_conf *full_conf)
 {
 	int				sprite_count;
 	int				i;
 	t_sprite_list	*temp_sprt;
 	
 	i = 0;
-	sprite_count = ft_sprt_lstsize(D_CONFIG->sprt_lst);
-	temp_sprt = D_CONFIG->sprt_lst;
+	sprite_count = ft_sprt_lstsize(full_conf->config->sprt_lst);
+	temp_sprt = full_conf->config->sprt_lst;
 	while (i < sprite_count)
 	{
-		sprite_in_front(display_config, temp_sprt);
+		sprite_in_front(full_conf, temp_sprt);
 		temp_sprt = temp_sprt->next;
 		i++;
 	}
 }
 
-void fire(t_display_config *display_config)
+void fire(t_full_conf *full_conf)
 {
-	if (GUN->ammo > 0)
+	if (full_conf->gun->ammo > 0)
 	{
-		GUN->ammo--;
-		play_sound("./ressources/sounds/gun.wav", 0, display_config);
-		sprite_in_front_loop(display_config);
-		gun(display_config, 0);
+		full_conf->gun->ammo--;
+		play_sound("./ressources/sounds/gun.wav", 0, full_conf);
+		sprite_in_front_loop(full_conf);
+		gun(full_conf, 0);
 	}
 }
 
-void gun_animation_two(t_display_config *display_config)
+void gun_animation_two(t_full_conf *full_conf)
 {
-	if (GUN->call_count == 5 || GUN->call_count == 6)
+	if (full_conf->gun->call_count == 5 || full_conf->gun->call_count == 6)
 	{
-		GUN->gun_pos.x = -4;
-		GUN->gun_pos.y = 2;
+		full_conf->gun->gun_pos.x = -4;
+		full_conf->gun->gun_pos.y = 2;
 	}
-	else if (GUN->call_count == 7)
+	else if (full_conf->gun->call_count == 7)
 	{
-		GUN->gun_pos.x = -8;
-		GUN->gun_pos.y = 4;
+		full_conf->gun->gun_pos.x = -8;
+		full_conf->gun->gun_pos.y = 4;
 	}
-	else if (GUN->call_count == 8)
+	else if (full_conf->gun->call_count == 8)
 	{
-		GUN->gun_pos.x = 0;
-		GUN->gun_pos.y = 0;
-		GUN->call_count = -1;
+		full_conf->gun->gun_pos.x = 0;
+		full_conf->gun->gun_pos.y = 0;
+		full_conf->gun->call_count = -1;
 	}
-	GUN->call_count++;
+	full_conf->gun->call_count++;
 }
 
-void gun_animation(t_display_config *display_config)
+void gun_animation(t_full_conf *full_conf)
 {
-	if (GUN->call_count == 0 || GUN->call_count == 4)
+	if (full_conf->gun->call_count == 0 || full_conf->gun->call_count == 4)
 	{
-		GUN->gun_pos.x = 0;
-		GUN->gun_pos.y = 0;
+		full_conf->gun->gun_pos.x = 0;
+		full_conf->gun->gun_pos.y = 0;
 	}
-	else if (GUN->call_count == 1 || GUN->call_count == 3)
+	else if (full_conf->gun->call_count == 1 || full_conf->gun->call_count == 3)
 	{
-		GUN->gun_pos.x = 4;
-		GUN->gun_pos.y = 2;
+		full_conf->gun->gun_pos.x = 4;
+		full_conf->gun->gun_pos.y = 2;
 	}
-	else if (GUN->call_count == 2)
+	else if (full_conf->gun->call_count == 2)
 	{
-		GUN->gun_pos.x = 8;
-		GUN->gun_pos.y = 4;
+		full_conf->gun->gun_pos.x = 8;
+		full_conf->gun->gun_pos.y = 4;
 	}
-	gun_animation_two(display_config);
+	gun_animation_two(full_conf);
 }
 
-int gun(t_display_config *display_config, int animation)
+int gun(t_full_conf *full_conf, int animation)
 {
 	if (animation)
-		gun_animation(display_config);
-	mlx_put_image_to_window(D_DATA->mlx_ptr, D_DATA->mlx_win, GUN->img->temp, 
-		D_CONFIG->resolution.x / 2 - GUN->gun_pos.x,
-		D_CONFIG->resolution.y - 190 - GUN->gun_pos.y);
+		gun_animation(full_conf);
+	mlx_put_image_to_window(full_conf->data->mlx_ptr, full_conf->data->mlx_win,
+		full_conf->gun->img->temp,
+		full_conf->config->res.x / 2 - full_conf->gun->gun_pos.x,
+		full_conf->config->res.y - 190 - full_conf->gun->gun_pos.y);
 	return (0);
 }
 

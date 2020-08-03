@@ -6,13 +6,13 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:38:37 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/02 21:54:24 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 18:56:31 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../sources/header.h"
 
-void play_sound(char *path, int volume, t_display_config *display_config)
+void play_sound(char *path, int volume, t_full_conf *full_conf)
 {
 	char *cmd;
 	pid_t pid = fork();
@@ -24,7 +24,7 @@ void play_sound(char *path, int volume, t_display_config *display_config)
 	if (cmd == NULL)
 	{
 		code_error(3);
-		handle_exit(display_config);
+		handle_exit(full_conf);
 	}
 	if (pid == 0) {
 		system("killall afplay 2&>/dev/null >/dev/null\n");
@@ -34,16 +34,16 @@ void play_sound(char *path, int volume, t_display_config *display_config)
 	free(cmd);
 }
 
-void sprite_in_front(t_display_config *display_config, t_sprite_list *temp_sprt)
+void sprite_in_front(t_full_conf *full_conf, t_sprite_list *temp_sprt)
 {
 	t_dimension	pointer;
 	
-	pointer.x = D_CONFIG->resolution.x / 1.8;
-	pointer.y = D_CONFIG->resolution.y / 1.4;
+	pointer.x = full_conf->config->res.x / 1.8;
+	pointer.y = full_conf->config->res.y / 1.4;
 	if (pointer.x >= temp_sprt->param.draw_start.x && pointer.x <= temp_sprt->param.draw_end.x &&
 		pointer.y >= temp_sprt->param.draw_start.y && pointer.y <= temp_sprt->param.draw_end.y)
 	{
-		play_sound("./ressources/sounds/barrel_explosion.mp3", 1, display_config);
+		play_sound("./ressources/sounds/barrel_explosion.mp3", 1, full_conf);
 	}
-	reload_scene(display_config, 0);
+	reload_scene(full_conf, 0);
 }

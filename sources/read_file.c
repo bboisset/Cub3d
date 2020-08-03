@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:38 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 15:59:27 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 18:50:51 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	assign_map_width(char *str, t_map_config *config)
 	int str_len;
 	
 	str_len = ft_strlen(str);
-	if (!config->map_width.x || str_len > config->map_width.x)
-		config->map_width.x = str_len;
+	if (!config->map_w.x || str_len > config->map_w.x)
+		config->map_w.x = str_len;
 }
 
 static int inspect_line(char *str, int line_n, t_map_config *config, int map_start)

@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:30 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 17:59:43 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 19:01:20 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 void free_config(t_map_config *config)
 {
 	int i;
-	
+
 	i = 0;
 	free_textures(config);
 	free_sprites(&config->sprt_lst);
 	if (config->step > 1)
 	{
 		if (config->step > 2)
-			while (i < config->map_width.x)
+			while (i < config->map_w.x)
 				free(config->map[i++]);
 		free(config->map);
 		if (config->step > 3)
@@ -64,13 +64,13 @@ void free_data(t_data *data)
 	free(data);
 }
 
-int exit_pr(t_display_config *display_config)
+int exit_pr(t_full_conf *full_conf)
 {
-	free(D_CAM);
-	free_config(D_CONFIG);
-	free_data(D_DATA);
-	free_minimap(MINIMAP, 1);
-	free_gun(GUN);
+	free(full_conf->camera);
+	free_config(full_conf->config);
+	free_data(full_conf->data);
+	free_minimap(full_conf->minimap, 1);
+	free_gun(full_conf->gun);
 	return (0);
 }
 

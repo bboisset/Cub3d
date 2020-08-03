@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:45 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 17:58:59 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 18:24:36 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_img_data	*load_textures_struct(void *img_ptr, t_map_config *config)
 		&img_data->sizeline, &img_data->endian);
 	img_data->temp = img_ptr;
 	if (config)
-		TEXTURE->loaded_texture += 1;
+		config->textures->loaded_texture += 1;
 	return (img_data);
 }
 
@@ -33,23 +33,23 @@ int			load_textures(t_map_config *config, t_data *data)
 
 	w = 256;
 	img_ptr = mlx_xpm_file_to_image(data->mlx_ptr,
-		TEXTURE->north_texture_path, &w, &w);
-	TEXTURE->north_texture = load_textures_struct(img_ptr, config);
+		config->textures->north_texture_path, &w, &w);
+	config->textures->north_texture = load_textures_struct(img_ptr, config);
 	img_ptr = mlx_xpm_file_to_image(data->mlx_ptr,
-		TEXTURE->south_texture_path, &w, &w);
-	TEXTURE->south_texture = load_textures_struct(img_ptr, config);
+		config->textures->south_texture_path, &w, &w);
+	config->textures->south_texture = load_textures_struct(img_ptr, config);
 	img_ptr = mlx_xpm_file_to_image(data->mlx_ptr,
-		TEXTURE->east_texture_path, &w, &w);
-	TEXTURE->east_texture = load_textures_struct(img_ptr, config);
+		config->textures->east_texture_path, &w, &w);
+	config->textures->east_texture = load_textures_struct(img_ptr, config);
 	img_ptr = mlx_xpm_file_to_image(data->mlx_ptr,
-		TEXTURE->west_texture_path, &w, &w);
-	TEXTURE->west_texture = load_textures_struct(img_ptr, config);
+		config->textures->west_texture_path, &w, &w);
+	config->textures->west_texture = load_textures_struct(img_ptr, config);
 	img_ptr = mlx_xpm_file_to_image(data->mlx_ptr,
-		TEXTURE->sprite_texture_path, &w, &w);
-	TEXTURE->sprite_texture = load_textures_struct(img_ptr, config);
-	if (!TEXTURE->north_texture || !TEXTURE->south_texture ||
-		!TEXTURE->east_texture || !TEXTURE->west_texture ||
-		!TEXTURE->sprite_texture)
+		config->textures->sprite_texture_path, &w, &w);
+	config->textures->sprite_texture = load_textures_struct(img_ptr, config);
+	if (!config->textures->north_texture || !config->textures->south_texture ||
+		!config->textures->east_texture || !config->textures->west_texture ||
+		!config->textures->sprite_texture)
 		return (texture_error(config));
 	return (0);
 }
