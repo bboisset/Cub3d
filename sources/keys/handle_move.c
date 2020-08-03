@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:36:12 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 17:41:01 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 17:44:48 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	handle_go_down(t_display_config *display_config)
 		D_CONFIG->resolution.x, D_CONFIG->resolution.y);
 	reload_scene(display_config, 1);
 }
+
 void	handle_go_left(t_display_config *display_config)
 {
 	if (D_CONFIG->map[(int)(D_CAM->pos.x - D_CAM->fov.x *
@@ -54,6 +55,7 @@ void	handle_go_left(t_display_config *display_config)
 		D_CONFIG->resolution.y);
 	reload_scene(display_config, 1);
 }
+
 void	handle_go_right(t_display_config *display_config)
 {
 	if (D_CONFIG->map[(int)(D_CAM->pos.x + D_CAM->fov.x *

@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:54:31 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 17:37:29 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 17:43:50 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		key_press(int keycode, t_display_config *display_config)
 	return (0);
 }
 
-int		key_realease(int keycode,  t_display_config *display_config)
+int		key_realease(int keycode, t_display_config *display_config)
 {
 	if (keycode == 13)
 		display_config->key.up_active = 0;

@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:11 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 17:34:33 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 17:45:15 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ static void	draw_stripe_line(int x, t_drw_spt *param,
 		draw_stripe_line_loop(x, tex_dim, param, display_config);
 	}
 }
+
 void		draw_stripe(t_drw_spt *param, t_display_config *display_config)
 {
 	int x;

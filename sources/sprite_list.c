@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:38:09 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 15:46:43 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 17:42:07 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,3 @@ int				ft_sprt_lstsize(t_sprite_list *lst)
 	}
 	return (i);
 }
-
