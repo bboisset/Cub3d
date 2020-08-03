@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:56:55 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 22:07:30 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:10:51 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	define_draw(t_raycast *param, t_display *camera, t_map_config *config)
 	param->draw.draw_start = -param->line_height / 2 + config->res.y
 		/ 2;
 	param->draw.draw_end = param->line_height / 2 + config->res.y / 2;
-	param->draw.draw_start = (param->draw.draw_start < 
+	param->draw.draw_start = (param->draw.draw_start <
 		0) ? 0 : param->draw.draw_start;
 	param->draw.draw_end = (param->draw.draw_end >=
 		config->res.y) ? config->res.y - 1 : param->draw.draw_end;

@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:36:42 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 22:09:31 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:11:52 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static t_drw_spt	init_draw_sprite(t_map_config *config, t_display *camera,
 	t_dimension sprite_pos)
 {
 	t_drw_spt	param;
-	
+
 	param.sprite_co.x = sprite_pos.x - camera->pos.x + 0.5;
 	param.sprite_co.y = sprite_pos.y - camera->pos.y + 0.5;
 	param.inv_det = 1.0 / (camera->fov.x * config->init_dir.y -
@@ -33,7 +33,7 @@ static t_drw_spt	init_draw_sprite(t_map_config *config, t_display *camera,
 	return (param);
 }
 
-void				define_spt_draw_w(t_map_config *config, t_drw_spt	*param)
+void				define_spt_draw_w(t_map_config *config, t_drw_spt *param)
 {
 	param->draw_start.y = -param->spt_dim.y / 2 + config->res.y / 2
 	+ param->v_screen_move;
@@ -44,9 +44,9 @@ void				define_spt_draw_w(t_map_config *config, t_drw_spt	*param)
 		config->res.y) ? config->res.y - 1 : param->draw_end.y;
 }
 
-void				define_spt_draw_h(t_map_config *config, t_drw_spt	*param)
+void				define_spt_draw_h(t_map_config *config, t_drw_spt *param)
 {
-	param->spt_dim.x = abs(((int) (config->res.y /
+	param->spt_dim.x = abs(((int)(config->res.y /
 		(param->transform.y))) / SCALE_SPRITE);
 	param->draw_start.x = -param->spt_dim.x / 2 + param->spt_scr_x;
 	param->draw_end.x = param->spt_dim.x / 2 + param->spt_scr_x;

@@ -6,18 +6,18 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:56:20 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 18:57:22 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:17:45 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../sources/header.h"
 
-void fill_minimap_line(int vline_n, int color, t_full_conf *full_conf)
+void		fill_minimap_line(int vline_n, int color, t_full_conf *full_conf)
 {
 	int			x;
 	int			index;
 	int			old_color;
-	
+
 	old_color = color;
 	x = 0;
 	while (x < full_conf->minimap->dim.y)
@@ -39,7 +39,7 @@ void fill_minimap_line(int vline_n, int color, t_full_conf *full_conf)
 	}
 }
 
-void place_player(t_full_conf *full_conf)
+void		place_player(t_full_conf *full_conf)
 {
 	int x;
 	int y;
@@ -54,11 +54,11 @@ void place_player(t_full_conf *full_conf)
 		full_conf->data->mlx_win, full_conf->minimap->player_icon->temp, x, y);
 }
 
-static void fill_minimap(t_full_conf *full_conf)
+static void	fill_minimap(t_full_conf *full_conf)
 {
 	int line_n;
 	int color;
-	
+
 	color = (235 << 24) + (64 << 16) + (52 << 8) + (0.34);
 	line_n = 0;
 	while (line_n < full_conf->minimap->dim.x)
@@ -68,7 +68,7 @@ static void fill_minimap(t_full_conf *full_conf)
 	}
 }
 
-int mimimap(t_full_conf *full_conf)
+int			mimimap(t_full_conf *full_conf)
 {
 	if (init_minimap(full_conf) == -1)
 		return (-3);

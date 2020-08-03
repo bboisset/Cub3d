@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:31 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 22:03:38 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:10:16 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int					loop_till_hit(int side, t_raycast *param, t_display *camera,
 	hit = 0;
 	while (hit == 0)
 	{
-		if (param->side_dist_x  < param->side_dist_y)
+		if (param->side_dist_x < param->side_dist_y)
 		{
 			param->side_dist_x += param->delta_dist_x;
 			param->map_x += step.x;

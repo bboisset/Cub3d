@@ -6,19 +6,19 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:38:28 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 18:56:32 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:14:10 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../sources/header.h"
 
-int init_gun(t_full_conf *full_conf)
+int			init_gun(t_full_conf *full_conf)
 {
 	void *img_ptr;
 	int w;
 	int h;
-	
+
 	w = 320;
 	h = 200;
 	if (open("/Users/baptisteboisset/Desktop/cub3d/srcs/imgs/gun3.xpm",
@@ -41,12 +41,12 @@ int init_gun(t_full_conf *full_conf)
 	return (0);
 }
 
-int init_icon_player(t_full_conf *full_conf)
+int			init_icon_player(t_full_conf *full_conf)
 {
 	void		*icn_ptr;
 	int			color;
 	t_minimap	*minimap;
-	
+
 	minimap = full_conf->minimap;
 	color = (255 << 24) + (255 << 16) + (255 << 8) + (0.4);
 	icn_ptr = mlx_new_image(full_conf->data->mlx_ptr, minimap->cub_sz,
@@ -58,16 +58,18 @@ int init_icon_player(t_full_conf *full_conf)
 		return (-1);
 	}
 	fill_img(minimap->cub_sz, minimap->cub_sz, color, minimap->player_icon);
-	draw_circle(minimap->cub_sz/3, minimap->cub_sz/3, minimap->cub_sz / 3,
+	draw_circle(minimap->cub_sz / 3, minimap->cub_sz / 3, minimap->cub_sz / 3,
 		minimap->player_icon);
 	return (0);
 }
 
 /*
-** Define Minimap width with 20% of screen width or screen height if map width is superior of map height
-** Define size of cube by minimap width/height divided by map width/height
+** Define Minimap width with 20% of screen width or screen height if map width 
+** is superior of map height.
+** Define size of cube by minimap width/height divided by map width/height.
 */
-static void init_minimap_width_or_height(t_full_conf *full_conf)
+
+static void	init_minimap_width_or_height(t_full_conf *full_conf)
 {
 	if (full_conf->config->map_w.x < full_conf->config->map_w.y)
 	{
@@ -91,10 +93,10 @@ static void init_minimap_width_or_height(t_full_conf *full_conf)
 	}
 }
 
-int	init_minimap(t_full_conf *full_conf)
+int			init_minimap(t_full_conf *full_conf)
 {
 	void *img_ptr;
-	
+
 	if (!(full_conf->minimap = (t_minimap*)malloc(sizeof(t_minimap))))
 		return (-1);
 	init_minimap_width_or_height(full_conf);

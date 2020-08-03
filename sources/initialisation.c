@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:49 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 22:06:10 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:10:36 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_img_data		*init_img_data(t_data *data)
 
 	if (!(img_data = (t_img_data*)malloc(sizeof(t_img_data))))
 		return (NULL);
-	img_data->data_img = mlx_get_data_addr(data->mlx_img, &img_data->bpp, 
+	img_data->data_img = mlx_get_data_addr(data->mlx_img, &img_data->bpp,
 		&img_data->bpp, &img_data->endian);
 	return (img_data);
 }
@@ -52,7 +52,7 @@ t_data					*init_data(t_map_config *config)
 	return (data);
 }
 
-t_full_conf				*join_full_conf(t_display *display, 
+t_full_conf				*join_full_conf(t_display *display,
 	t_map_config *config, t_data *data)
 {
 	t_full_conf	*full_conf;
