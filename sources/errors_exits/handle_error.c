@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:56 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/04 17:37:00 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/04 17:57:17 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,25 @@ static void	free_textures_path(t_map_config *config)
 	free(config->textures->sprite_texture_path);
 }
 
-void		free_textures(t_map_config *config, void *mlx_ptr)
+void		free_textures(t_map_config *config, t_data *data)
 {
 	free_textures_path(config);
 	if (config->textures->loaded_texture > 0)
-		free_image(mlx_ptr, config->textures->north_texture);
+		free_image(data->mlx_ptr, config->textures->north_texture);
 	if (config->textures->loaded_texture > 1)
-		free_image(mlx_ptr, config->textures->south_texture);
+		free_image(data->mlx_ptr, config->textures->south_texture);
 	if (config->textures->loaded_texture > 2)
-		free_image(mlx_ptr, config->textures->east_texture);
+		free_image(data->mlx_ptr, config->textures->east_texture);
 	if (config->textures->loaded_texture > 3)
-		free_image(mlx_ptr, config->textures->west_texture);
+		free_image(data->mlx_ptr, config->textures->west_texture);
 	if (config->textures->loaded_texture > 4)
-		free_image(mlx_ptr, config->textures->sprite_texture);
+		free_image(data->mlx_ptr, config->textures->sprite_texture);
 	free(config->textures);
 }
 
 int			texture_error(t_map_config *config, t_data *data)
 {
-	free_textures(config, data->mlx_ptr);
+	free_textures(config, data);
 	return (-1);
 }
 

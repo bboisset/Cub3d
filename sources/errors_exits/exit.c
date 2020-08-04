@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:30 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/04 17:42:24 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/04 18:09:54 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	free_config(t_map_config *config, t_data *data)
 	int i;
 
 	i = 0;
-	if (data)
-		free_textures(config, data);
+	free_textures(config, data);
 	free_sprites(&config->sprt_lst);
 	if (config->step > 1)
 	{
