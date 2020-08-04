@@ -36,10 +36,10 @@ SRCS	=	sources/bitmap.c \
 			includes/Get-Next-Line/get_next_line.c \
 			includes/Get-Next-Line/get_next_line_utils.c
 
-SRCS_BONUS = bonus/bonus_init.c \
-			bonus/bonus_utils.c \
-			bonus/gun.c \
-			bonus/minimap.c
+SRCS_BONUS = 	bonus/bonus_init.c \
+				bonus/bonus_utils.c \
+				bonus/bonus_gun.c \
+				bonus/bonus_minimap.c
 
 OBJSRCS			=	$(SRCS:.c=.o)
 OBJSRCSBONUS	=	$(SRCS_BONUS:.c=.o)
