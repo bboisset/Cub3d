@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:30 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 21:57:41 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/04 17:20:17 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,23 @@ void	free_config(t_map_config *config)
 
 void	free_gun(t_gun *gun)
 {
-	free(gun->img->data_img);
+	//free(gun->img->data_img);
 	free(gun->img->temp);
 	free(gun->img);
 	free(gun);
 }
 
-void	free_minimap(t_minimap *minimap, int type)
+void	free_minimap(t_data *data, t_minimap *minimap, int type)
 {
 	if (type > 0)
 	{
 		free(minimap->player_icon->temp);
-		free(minimap->player_icon->data_img);
+		mlx_destroy_image(data->mlx_ptr, minimap->player_icon->temp);
+		//free(minimap->player_icon->data_img);
 		free(minimap->player_icon);
 	}
-	free(minimap->data->temp);
-	free(minimap->data->data_img);
+	mlx_destroy_image(data->mlx_ptr, minimap->data->temp);
+	//free(minimap->data->data_img);
 	free(minimap->data);
 	free(minimap);
 }
@@ -58,9 +59,10 @@ void	free_minimap(t_minimap *minimap, int type)
 void	free_data(t_data *data)
 {
 	mlx_destroy_window(data->mlx_ptr, data->mlx_win);
-	free(data->mlx_img);
-	free(data->data->data_img);
+	//free(data->mlx_img);
+	//free(data->data->data_img);
 	free(data->data);
+	mlx_destroy_image(data->mlx_ptr, data->mlx_img);
 	free(data);
 }
 
@@ -68,8 +70,8 @@ int		exit_pr(t_full_conf *full_conf)
 {
 	free(full_conf->camera);
 	free_config(full_conf->config);
+	free_minimap(full_conf->data, full_conf->minimap, 1);
 	free_data(full_conf->data);
-	free_minimap(full_conf->minimap, 1);
 	free_gun(full_conf->gun);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/04 13:26:23 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/04 17:17:31 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -309,7 +309,8 @@ void						code_error(int code);
 
 int							exit_pr(t_full_conf *full_conf);
 void						free_gun(t_gun *gun);
-void						free_minimap(t_minimap *minimap, int type);
+void						free_minimap(t_data *data, t_minimap *minimap,
+	int type);
 
 void						free_sprites(t_sprite_list **sprt_lst);
 
