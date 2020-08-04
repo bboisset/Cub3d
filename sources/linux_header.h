@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/04 17:40:08 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/04 18:19:36 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,7 +290,7 @@ void						init_raycast(int x, t_raycast *param,
 	t_display *camera, t_map_config *config);
 
 int							main_error(int n);
-void						free_textures(t_map_config	*config, void *mlx_ptr);
+void						free_textures(t_map_config	*config, t_data *data);
 void						free_data(t_data *data);
 void						free_image(void *mlx_ptr, t_img_data *img_data);
 int							texture_error(t_map_config *config, t_data *data);
