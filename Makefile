@@ -1,7 +1,7 @@
 NAME	=	Cub3D
 
-#MLX		=	-lmlx -lm -framework OpenGL -framework AppKit
-MLX		=	-I /usr/X11/include /usr/X11/lib/libmlx_Linux.a -lmlx -lXext -lX11 -lm
+MLX		=	-lmlx -lm -framework OpenGL -framework AppKit
+#MLX		=	-I /usr/X11/include /usr/X11/lib/libmlx_Linux.a -lmlx -lXext -lX11 -lm
 
 LIBFT	=	includes/libft
 

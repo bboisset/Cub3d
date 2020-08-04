@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/04 17:17:31 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/04 17:40:03 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,10 +290,10 @@ void						init_raycast(int x, t_raycast *param,
 	t_display *camera, t_map_config *config);
 
 int							main_error(int n);
-void						free_textures(t_map_config	*config);
+void						free_textures(t_map_config	*config, void *mlx_ptr);
 void						free_data(t_data *data);
-void						free_image(t_img_data *img_data);
-int							texture_error(t_map_config	*config);
+void						free_image(void *mlx_ptr, t_img_data *img_data);
+int							texture_error(t_map_config *config, t_data *data);
 int							full_error_d(t_full_conf *full_conf,
 	int type, int code);
 int							full_error(t_map_config *config, t_data *data,
@@ -308,7 +308,7 @@ int							cam_mall_err(t_map_config *config,
 void						code_error(int code);
 
 int							exit_pr(t_full_conf *full_conf);
-void						free_gun(t_gun *gun);
+void						free_gun(t_data *data, t_gun *gun);
 void						free_minimap(t_data *data, t_minimap *minimap,
 	int type);
 
@@ -323,7 +323,7 @@ void						fire(t_full_conf *full_conf);
 
 void						enable_minimap(t_full_conf *full_conf);
 
-void						free_config(t_map_config *config);
+void						free_config(t_map_config *confi, t_data *data);
 
 int							check_map_wall(t_map_config *config);
 

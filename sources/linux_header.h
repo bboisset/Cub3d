@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/04 13:33:31 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/04 17:40:08 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -264,7 +264,7 @@ void						draw_stripe(t_drw_spt *param,
 
 void						draw_vertical_line(t_dimension start_pos, int y2,
 	const int color, t_data *data);
-void						draw_circle(int x, int y, int r, t_img_data *img);
+void						draw_circle(int x, int y, int f, t_img_data *img);
 void						fill_img(int x, int y, int color, t_img_data *img);
 
 int							mimimap(t_full_conf *full_conf);
@@ -290,10 +290,10 @@ void						init_raycast(int x, t_raycast *param,
 	t_display *camera, t_map_config *config);
 
 int							main_error(int n);
-void						free_textures(t_map_config	*config);
+void						free_textures(t_map_config	*config, void *mlx_ptr);
 void						free_data(t_data *data);
-void						free_image(t_img_data *img_data);
-int							texture_error(t_map_config	*config);
+void						free_image(void *mlx_ptr, t_img_data *img_data);
+int							texture_error(t_map_config *config, t_data *data);
 int							full_error_d(t_full_conf *full_conf,
 	int type, int code);
 int							full_error(t_map_config *config, t_data *data,
@@ -308,8 +308,9 @@ int							cam_mall_err(t_map_config *config,
 void						code_error(int code);
 
 int							exit_pr(t_full_conf *full_conf);
-void						free_gun(t_gun *gun);
-void						free_minimap(t_minimap *minimap, int type);
+void						free_gun(t_data *data, t_gun *gun);
+void						free_minimap(t_data *data, t_minimap *minimap,
+	int type);
 
 void						free_sprites(t_sprite_list **sprt_lst);
 
@@ -322,7 +323,7 @@ void						fire(t_full_conf *full_conf);
 
 void						enable_minimap(t_full_conf *full_conf);
 
-void						free_config(t_map_config *config);
+void						free_config(t_map_config *config, t_data *data);
 
 int							check_map_wall(t_map_config *config);
 

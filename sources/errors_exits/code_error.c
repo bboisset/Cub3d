@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:23 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/04 16:09:00 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/04 17:31:23 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ static void	code_error_two(int code)
 		ft_putstr("Can't save bitmap\n");
 }
 
-void		free_image(t_img_data *img_data)
+void		free_image(void *mlx_ptr, t_img_data *img_data)
 {
-	free(img_data->temp);
-	//free(img_data->data_img);
+	mlx_destroy_image(mlx_ptr, img_data->temp);
 	free(img_data);
 }
 

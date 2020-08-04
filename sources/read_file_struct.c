@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:45 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 18:24:36 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/04 17:34:35 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ int			load_textures(t_map_config *config, t_data *data)
 	if (!config->textures->north_texture || !config->textures->south_texture ||
 		!config->textures->east_texture || !config->textures->west_texture ||
 		!config->textures->sprite_texture)
-		return (texture_error(config));
+		return (texture_error(config, data));
 	return (0);
 }
