@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 14:56:59 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/04 12:52:37 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/04 15:07:33 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static int	first_launch_end(t_full_conf *full_conf)
 	else
 	{
 		gun(full_conf, 0);
-		mlx_hook(full_conf->data->mlx_win, 2, 5, key_press, full_conf);
-		mlx_hook(full_conf->data->mlx_win, 3, 5, key_realease, full_conf);
-		mlx_hook(full_conf->data->mlx_win, 17, 0, handle_exit, full_conf);
+		mlx_hook(full_conf->data->mlx_win, 2, 1L << 0, key_press, full_conf);
+		mlx_hook(full_conf->data->mlx_win, 3, 1L << 1, key_realease, full_conf);
+		mlx_hook(full_conf->data->mlx_win, 17, 1l << 17, handle_exit, full_conf);
 		mlx_loop(full_conf->data->mlx_ptr);
 	}
 	return (0);
