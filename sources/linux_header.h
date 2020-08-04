@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   linux_header.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/04 13:26:23 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/04 13:33:31 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@
 # define SCALE_SPRITE 1
 # define VMOVE 64
 # define PI 3.1415926535
-# define KEY_W 13
-# define KEY_S 1
-# define KEY_A 0
-# define KEY_D 2
-# define KEY_ARR_RIGHT 124
-# define KEY_ARR_LEFT 123
-# define KEY_M 46
-# define KEY_SPACE 49
-# define KEY_ESC 53
+# define KEY_W 119
+# define KEY_S 115
+# define KEY_A 97
+# define KEY_D 100
+# define KEY_ARR_RIGHT 65363
+# define KEY_ARR_LEFT 65361
+# define KEY_M 109
+# define KEY_SPACE 32
+# define KEY_ESC 65307
 # include <stdlib.h>
 # include <fcntl.h>
 # include <math.h>

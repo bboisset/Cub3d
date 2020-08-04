@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:54:31 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 19:06:31 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/04 13:26:13 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,34 +29,34 @@ int		handle_exit(t_full_conf *full_conf)
 
 int		key_press(int keycode, t_full_conf *full_conf)
 {
-	if (keycode == 53)
+	if (keycode == KEY_ESC)
 	{
 		handle_exit(full_conf);
 	}
-	if (keycode == 13)
+	if (keycode == KEY_W)
 		handle_go_up(full_conf);
-	if (keycode == 1)
+	if (keycode == KEY_S)
 		handle_go_down(full_conf);
-	if (keycode == 0)
+	if (keycode == KEY_A)
 		handle_go_left(full_conf);
-	if (keycode == 2)
+	if (keycode == KEY_D)
 		handle_go_right(full_conf);
-	if (keycode == 124)
+	if (keycode == KEY_ARR_RIGHT)
 		handle_cam_right(full_conf);
-	if (keycode == 123)
+	if (keycode == KEY_ARR_LEFT)
 		handle_cam_left(full_conf);
-	if (keycode == 46)
+	if (keycode == KEY_M)
 		enable_minimap(full_conf);
-	if (keycode == 49)
+	if (keycode == KEY_SPACE)
 		fire(full_conf);
 	return (0);
 }
 
 int		key_realease(int keycode, t_full_conf *full_conf)
 {
-	if (keycode == 13)
+	if (keycode == KEY_W)
 		full_conf->key.up_active = 0;
-	if (keycode == 1)
+	if (keycode == KEY_S)
 		full_conf->key.down_active = 0;
 	return (0);
 }
