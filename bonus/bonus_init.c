@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:38:28 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 22:19:39 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/04 13:17:22 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ int			init_gun(t_full_conf *full_conf)
 
 	w = 320;
 	h = 200;
-	if (open("/Users/baptisteboisset/Desktop/cub3d/srcs/imgs/gun3.xpm",
+	if (open("./ressources/imgs/gun3.xpm",
 		O_RDONLY) < 0 || !(full_conf->gun = (t_gun*)malloc(sizeof(t_gun))))
 	{
 		full_conf->config->config_error = -10;
 		return (-10);
 	}
 	img_ptr = mlx_xpm_file_to_image(full_conf->data->mlx_ptr,
-		"/Users/baptisteboisset/Desktop/cub3d/srcs/imgs/gun3.xpm", &w, &h);
+		"./ressources/imgs/gun3.xpm", &w, &h);
 	if (!img_ptr || !(full_conf->gun->img =
 		load_textures_struct(img_ptr, NULL)))
 	{

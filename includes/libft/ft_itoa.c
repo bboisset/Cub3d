@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bboisset <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 15:27:31 by bboisset          #+#    #+#             */
-/*   Updated: 2019/12/12 16:09:59 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/04 10:29:21 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,6 @@ static int	ft_number_length_uint64_t(uint64_t nb)
 	length = 0;
 	if (nb == 0)
 		return (1);
-	else if (nb < 0)
-	{
-		nb *= -1;
-		length++;
-	}
 	while (nb > 0)
 	{
 		nb /= 10;
@@ -74,11 +69,6 @@ char		*ft_itoa_uint64_t(uint64_t n)
 	{
 		str[0] = '0';
 		return (str);
-	}
-	else if (n < 0)
-	{
-		str[0] = '-';
-		n *= -1;
 	}
 	while (n > 0)
 	{

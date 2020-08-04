@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 14:56:59 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 22:08:58 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/04 12:52:37 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int			first_launch(t_map_config *config)
 		return (full_error_d(full_conf, 0, 3));
 	config->step++;
 	if ((init_gun(full_conf)) < 0)
-		return (full_error_d(full_conf, 1, 3));
+		return (full_error_d(full_conf, 0, 3));
 	if (first_launch_end(full_conf) == -1)
 		return (full_error_d(full_conf, 2, 3));
 	return (0);
