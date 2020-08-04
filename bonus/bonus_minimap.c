@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:56:20 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/04 17:17:47 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/04 18:26:37 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int			mimimap(t_full_conf *full_conf)
 		return (-3);
 	if (init_icon_player(full_conf) == -1)
 	{
-		free_minimap(full_conf->data ,full_conf->minimap, 0);
+		free_minimap(full_conf->data, full_conf->minimap, 0);
 		return (-3);
 	}
 	fill_minimap(full_conf);
