@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:36:39 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 21:39:17 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/04 22:09:20 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	last_char_is_wall(char *str)
 	int i;
 
 	i = 0;
+	if (str[i] != '1')
+		return (0);
 	while (str[i] != '\0')
 		i++;
 	i--;

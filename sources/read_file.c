@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:38 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 20:16:33 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/06 13:44:59 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,17 @@ static int	inspect_line(char *str, int line_n, t_map_config *config,
 static int	element_hub_two(char *str, int line_n, int res,
 	t_map_config *config)
 {
-	if (str[0] == 'E' && str[1] == 'A')
+	if (str[0] == 'E' && str[1] == 'A' && !config->textures->east_texture_path)
 		config->textures->east_texture_path = get_path(2, str, config);
-	else if (str[0] == 'S' && str[1] != 'O')
+	else if (str[0] == 'S' && str[1] != 'O' &&
+		!config->textures->sprite_texture_path)
 		config->textures->sprite_texture_path = get_path(1, str, config);
-	else if (str[0] == 'F')
+	else if (str[0] == 'F' && !config->sky_color.red)
 		res = assign_sky(str, config);
-	else if (str[0] == 'C')
+	else if (str[0] == 'W' && str[1] == 'E' &&
+		!config->textures->west_texture_path)
+		config->textures->west_texture_path = get_path(2, str, config);
+	else if (str[0] == 'C' && !config->ground_color.red)
 		res = assign_ground(str, config);
 	if (res < 0)
 		config->config_error = res;
@@ -74,14 +78,14 @@ static int	element_hub(char *str, int line_n, t_map_config *config)
 		res = inspect_line(str, line_n, config, map_start);
 	else if (str[0] == '\0')
 		return (0);
-	else if (str[0] == 'R')
+	else if (str[0] == 'R' && !config->res.x)
 		res = assign_resolutions(str, config);
-	else if (str[0] == 'N' && str[1] == 'O')
+	else if (str[0] == 'N' && str[1] == 'O' &&
+		!config->textures->north_texture_path)
 		config->textures->north_texture_path = get_path(2, str, config);
-	else if (str[0] == 'S' && str[1] == 'O')
+	else if (str[0] == 'S' && str[1] == 'O' &&
+		!config->textures->south_texture_path)
 		config->textures->south_texture_path = get_path(2, str, config);
-	else if (str[0] == 'W' && str[1] == 'E')
-		config->textures->west_texture_path = get_path(2, str, config);
 	if (res < 0)
 		config->config_error = res;
 	return (element_hub_two(str, line_n, res, config));
@@ -100,13 +104,12 @@ int			read_file(int fd, t_map_config *config)
 	{
 		if ((fd_status = get_next_line(fd, &new_line)) == -1)
 			return (-1);
-		res = element_hub(new_line, line_n++, config);
+		if (ft_strlen(new_line) > 0)
+			res = element_hub(new_line, line_n++, config);
 		free(new_line);
 		if (res == -1)
 			return (-1);
 	}
-	if (fd_status == 0)
-		config->step = 0;
 	if (fd_status == -1 || config->player_count == 0)
 		return (-1);
 	return (0);

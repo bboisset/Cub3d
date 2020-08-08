@@ -1,4 +1,4 @@
-R 600 600
+R 800 600
 NO ./ressources/imgs/north.xpm
 SO ./ressources/imgs/south.xpm
 WE ./ressources/imgs/west.xpm
@@ -8,11 +8,5 @@ F 62,198,247
 C 114,114,114
 111111
 100101
-102001
-1100N1
-1000011
-1000001
-1000001
-1000011
-1000011
-1111111
+10N001
+111111

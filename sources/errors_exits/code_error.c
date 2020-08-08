@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:23 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/04 17:31:23 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/06 15:10:24 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static void	code_error_two(int code)
 		ft_putstr("Not Enough Memory Avalaible To Run / Gun Config is wrong\n");
 	else if (code == 11)
 		ft_putstr("Can't save bitmap\n");
+	else if (code == 12)
+		ft_putstr("Wrong map extension\n");
 }
 
 void		free_image(void *mlx_ptr, t_img_data *img_data)
@@ -41,13 +43,13 @@ void		code_error(int code)
 	else if (code == 4)
 		ft_putstr("Too many player on map\n");
 	else if (code == 5)
-		ft_putstr("Map is not surround by wall\n");
+		ft_putstr("Map is not surround by wall Or file doesn't end with map\n");
 	else if (code == 6)
 		ft_putstr("Error in config file\n");
 	else if (code == 7)
 		ft_putstr("Error in config file : Resolution\n");
 	else if (code == 8)
-		ft_putstr("Error in config file : Can't accesss to file\n");
+		ft_putstr("Error in config file : Can't access to file\n");
 	else if (code == 9)
 		ft_putstr("Error in config file : Color is out of range (0-255)\n");
 	else

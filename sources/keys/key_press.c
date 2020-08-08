@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:54:31 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/04 15:36:29 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/08 19:14:13 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,18 @@
 void	reload_scene(t_full_conf *full_conf, int gun_anim)
 {
 	game_loop(full_conf);
-	place_player(full_conf);
-	gun(full_conf, gun_anim);
+	gun_anim = gun_anim != 1 ? 0 : 1;
+	if (full_conf->config->small_res == 0)
+	{
+		place_player(full_conf);
+		gun(full_conf, gun_anim);
+	}
 }
 
 int		handle_exit(t_full_conf *full_conf)
 {
-	system("killall afplay 2&>/dev/null >/dev/null\n");
+	if (full_conf->config->small_res == 0)
+		system("killall afplay 2&>/dev/null >/dev/null\n");
 	exit_pr(full_conf);
 	exit(1);
 	return (0);
@@ -29,6 +34,7 @@ int		handle_exit(t_full_conf *full_conf)
 
 int		key_press(int keycode, t_full_conf *full_conf)
 {
+	//printf("%i\n",keycode);
 	if (keycode == KEY_ESC)
 	{
 		handle_exit(full_conf);
@@ -45,9 +51,9 @@ int		key_press(int keycode, t_full_conf *full_conf)
 		handle_cam_right(full_conf);
 	if (keycode == KEY_ARR_LEFT)
 		handle_cam_left(full_conf);
-	if (keycode == KEY_M)
+	if (keycode == KEY_M && full_conf->config->small_res == 0)
 		enable_minimap(full_conf);
-	if (keycode == KEY_SPACE)
+	if (keycode == KEY_SPACE && full_conf->config->small_res == 0)
 		fire(full_conf);
 	return (0);
 }

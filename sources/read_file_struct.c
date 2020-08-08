@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:45 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/04 17:34:35 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/05 02:08:55 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_img_data	*load_textures_struct(void *img_ptr, t_map_config *config)
 {
-	t_img_data *img_data;
+	t_img_data	*img_data;
 
 	if (!(img_data = (t_img_data*)malloc(sizeof(t_img_data))) || !img_ptr)
 		return (NULL);
@@ -26,30 +26,43 @@ t_img_data	*load_textures_struct(void *img_ptr, t_map_config *config)
 	return (img_data);
 }
 
-int			load_textures(t_map_config *config, t_data *data)
+static int	load_xpm(char *path, t_map_config *config, t_data *data,
+	t_img_data **texture)
 {
-	int		w;
-	void	*img_ptr;
+	int			w;
+	void		*img_ptr;
 
 	w = 256;
-	img_ptr = mlx_xpm_file_to_image(data->mlx_ptr,
-		config->textures->north_texture_path, &w, &w);
-	config->textures->north_texture = load_textures_struct(img_ptr, config);
-	img_ptr = mlx_xpm_file_to_image(data->mlx_ptr,
-		config->textures->south_texture_path, &w, &w);
-	config->textures->south_texture = load_textures_struct(img_ptr, config);
-	img_ptr = mlx_xpm_file_to_image(data->mlx_ptr,
-		config->textures->east_texture_path, &w, &w);
-	config->textures->east_texture = load_textures_struct(img_ptr, config);
-	img_ptr = mlx_xpm_file_to_image(data->mlx_ptr,
-		config->textures->west_texture_path, &w, &w);
-	config->textures->west_texture = load_textures_struct(img_ptr, config);
-	img_ptr = mlx_xpm_file_to_image(data->mlx_ptr,
-		config->textures->sprite_texture_path, &w, &w);
-	config->textures->sprite_texture = load_textures_struct(img_ptr, config);
-	if (!config->textures->north_texture || !config->textures->south_texture ||
-		!config->textures->east_texture || !config->textures->west_texture ||
-		!config->textures->sprite_texture)
-		return (texture_error(config, data));
+	if (open(path, O_RDONLY) < 0)
+	{
+		config->config_error = -8;
+		return (-3);
+	}
+	img_ptr = mlx_xpm_file_to_image(data->mlx_ptr, path, &w, &w);
+	if (!img_ptr)
+		return (-3);
+	*texture = load_textures_struct(img_ptr, config);
+	if (!*texture)
+		return (-3);
+	return (0);
+}
+
+int			load_textures(t_map_config *config, t_data *data)
+{
+	if ((load_xpm(config->textures->north_texture_path, config, data,
+		&config->textures->north_texture)) < 0)
+		return (-1);
+	if ((load_xpm(config->textures->south_texture_path, config, data,
+		&config->textures->south_texture)) < 0)
+		return (-1);
+	if ((load_xpm(config->textures->east_texture_path, config, data,
+		&config->textures->east_texture)) < 0)
+		return (-1);
+	if ((load_xpm(config->textures->west_texture_path, config, data,
+		&config->textures->west_texture)) < 0)
+		return (-1);
+	if ((load_xpm(config->textures->sprite_texture_path, config, data,
+		&config->textures->sprite_texture)) < 0)
+		return (-1);
 	return (0);
 }

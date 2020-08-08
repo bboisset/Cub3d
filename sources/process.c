@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 14:56:59 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/04 17:39:57 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/08 18:10:02 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,26 @@
 
 static int	first_launch_end(t_full_conf *full_conf)
 {
-	game_loop(full_conf);
-	if (mimimap(full_conf) < 0)
-		return (-1);
+	/*game_loop(full_conf);*/
+	if (full_conf->config->small_res == 0)
+		if (mimimap(full_conf) < 0)
+			return (-1);
 	if (full_conf->config->save_img == 1)
 	{
 		if ((create_bitmap(full_conf->config, full_conf->data->data) < 0))
-			return (-1);
+			code_error(11);
 		handle_exit(full_conf);
 		return (0);
 	}
 	else
 	{
-		gun(full_conf, 0);
+		/*if (full_conf->config->small_res == 0)
+			gun(full_conf, 0);*/
 		mlx_hook(full_conf->data->mlx_win, 2, 1L << 0, key_press, full_conf);
 		mlx_hook(full_conf->data->mlx_win, 3, 1L << 1, key_realease, full_conf);
 		mlx_hook(full_conf->data->mlx_win, 17, 1l << 17,
 			handle_exit, full_conf);
+		mlx_loop_hook(full_conf->data->mlx_ptr, reload_scene, full_conf);
 		mlx_loop(full_conf->data->mlx_ptr);
 	}
 	return (0);
@@ -57,8 +60,9 @@ int			first_launch(t_map_config *config)
 	if (!(config->z_buffer = malloc(config->res.x * sizeof(double))))
 		return (full_error_d(full_conf, 0, 3));
 	config->step++;
-	if ((init_gun(full_conf)) < 0)
-		return (full_error_d(full_conf, 0, 3));
+	if (full_conf->config->small_res == 0)
+		if ((init_gun(full_conf)) < 0)
+			return (full_error_d(full_conf, 0, 3));
 	if (first_launch_end(full_conf) == -1)
 		return (full_error_d(full_conf, 2, 3));
 	return (0);

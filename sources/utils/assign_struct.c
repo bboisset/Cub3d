@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:36:33 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 20:19:49 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/05 18:30:43 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,6 @@ char	*get_path(int start, char *str, t_map_config *config)
 	if (!(path = ft_substr(str, i, ft_strlen(str))))
 	{
 		config->config_error = -3;
-		return (NULL);
-	}
-	if (open(path, O_RDONLY) < 0)
-	{
-		config->config_error = -8;
 		return (NULL);
 	}
 	return (path);
@@ -107,5 +102,7 @@ int		assign_resolutions(char *str, t_map_config *config)
 		return (-6);
 	config->res.x = config->res.x > SCREEN_MAX_W ? SCREEN_MAX_W : config->res.x;
 	config->res.y = config->res.y > SCREEN_MAX_H ? SCREEN_MAX_H : config->res.y;
+	if (config->res.x < 320 || config->res.y < 320)
+		config->small_res = 1;
 	return ((config->res.x > 0 && config->res.y > 0) ? 0 : -7);
 }

@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:56 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/04 18:19:55 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/06 15:22:08 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,15 @@ void		free_textures(t_map_config *config, t_data *data)
 	free(config->textures);
 }
 
-int			texture_error(t_map_config *config, t_data *data)
-{
-	free_textures(config, data);
-	return (-1);
-}
-
 int			full_error(t_map_config *config, t_data *data, t_display *display,
 	int code)
 {
+	int	save_img;
+
+	save_img = config->save_img;
+	code = config->config_error != 0 ? config->config_error : code;
 	free_config(config, data);
-	free_data(data);
+	free_data(data, save_img);
 	free(display);
 	code_error(code);
 	return (-1);

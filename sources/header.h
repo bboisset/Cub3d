@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/04 18:19:31 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/08 19:13:55 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ typedef struct				s_map_config
 	int						minimap_on;
 	int						save_img;
 	int						config_error;
+	int						small_res;
 	int						step;
 	int						player_count;
 }							t_map_config;
@@ -291,9 +292,8 @@ void						init_raycast(int x, t_raycast *param,
 
 int							main_error(int n);
 void						free_textures(t_map_config	*config, t_data *data);
-void						free_data(t_data *data);
+void						free_data(t_data *data, int save_img);
 void						free_image(void *mlx_ptr, t_img_data *img_data);
-int							texture_error(t_map_config *config, t_data *data);
 int							full_error_d(t_full_conf *full_conf,
 	int type, int code);
 int							full_error(t_map_config *config, t_data *data,

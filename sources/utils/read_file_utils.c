@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 20:06:05 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 20:21:49 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/06 13:35:10 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int			inspect_line_end(char *str, t_map_config *config)
 {
 	t_list	*new_list;
 
-	if (last_char_is_wall(str) == 0 ||
-		!(new_list = ft_lstnew(ft_strtrim_all(str, " "))))
-		return (-5);
+	if (!(new_list = ft_lstnew(ft_strtrim_all(str, " "))))
+		return (-3);
 	assign_map_width(new_list->content, config);
 	ft_lstadd_back(&config->temp_map, new_list);
+	config->step = 0;
 	return (0);
 }
