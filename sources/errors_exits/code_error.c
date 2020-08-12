@@ -6,11 +6,20 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:23 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/06 15:10:24 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/12 12:01:41 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
+
+int			handle_exit(t_full_conf *full_conf)
+{
+	if (full_conf->config->small_res == 0)
+		system("killall afplay 2&>/dev/null >/dev/null\n");
+	exit_pr(full_conf);
+	exit(1);
+	return (0);
+}
 
 static void	code_error_two(int code)
 {

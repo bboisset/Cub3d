@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:38 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/06 13:44:59 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/10 21:17:06 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ static int	element_hub_two(char *str, int line_n, int res,
 	else if (str[0] == 'S' && str[1] != 'O' &&
 		!config->textures->sprite_texture_path)
 		config->textures->sprite_texture_path = get_path(1, str, config);
-	else if (str[0] == 'F' && !config->sky_color.red)
-		res = assign_sky(str, config);
+	else if (str[0] == 'F' && !config->ground_color.red)
+		res = assign_ground(str, config);
 	else if (str[0] == 'W' && str[1] == 'E' &&
 		!config->textures->west_texture_path)
 		config->textures->west_texture_path = get_path(2, str, config);
-	else if (str[0] == 'C' && !config->ground_color.red)
-		res = assign_ground(str, config);
+	else if (str[0] == 'C' && !config->sky_color.red)
+		res = assign_sky(str, config);
 	if (res < 0)
 		config->config_error = res;
 	if (config->config_error < 0)

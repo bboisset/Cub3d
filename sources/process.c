@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 14:56:59 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/08 18:10:02 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/12 17:50:36 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 static int	first_launch_end(t_full_conf *full_conf)
 {
-	/*game_loop(full_conf);*/
+	//game_loop(full_conf);
 	if (full_conf->config->small_res == 0)
 		if (mimimap(full_conf) < 0)
 			return (-1);
 	if (full_conf->config->save_img == 1)
 	{
+		game_loop(full_conf);
 		if ((create_bitmap(full_conf->config, full_conf->data->data) < 0))
 			code_error(11);
 		handle_exit(full_conf);
@@ -70,12 +71,26 @@ int			first_launch(t_map_config *config)
 
 void		game_loop(t_full_conf *full_conf)
 {
+	if (full_conf->data->loop_count > 0)
+	{
+		mlx_destroy_image(full_conf->data->mlx_ptr, full_conf->data->mlx_img);
+		full_conf->data->mlx_img = mlx_new_image(full_conf->data->mlx_ptr,
+			full_conf->config->res.x, full_conf->config->res.y);
+	}
 	floor_sky_cast(full_conf);
 	raycasting_loop(full_conf);
 	sprite_loop(full_conf);
 	if (full_conf->config->save_img != 1)
+	{
 		mlx_put_image_to_window(full_conf->data->mlx_ptr,
 			full_conf->data->mlx_win,
 			full_conf->data->mlx_img, 0, 0);
+	}
 	full_conf->data->loop_count++;
 }
+/*
+mlx_destroy_image(full_conf->data->mlx_ptr, full_conf->data->mlx_img);
+	full_conf->daat->mlx_img = mlx_new_image(full_conf->data->mlx_ptr,
+		full_conf->config->res.x, full_conf->config->res.y);
+	reload_scene(full_conf, 1);
+*/

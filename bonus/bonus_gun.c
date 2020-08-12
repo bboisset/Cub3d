@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gun.c                                              :+:      :+:    :+:   */
+/*   bonus_gun.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:49:38 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/03 22:17:08 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/10 21:12:52 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,45 +40,20 @@ void	fire(t_full_conf *full_conf)
 	}
 }
 
-void	gun_animation_two(t_full_conf *full_conf)
-{
-	if (full_conf->gun->call_count == 5 || full_conf->gun->call_count == 6)
-	{
-		full_conf->gun->gun_pos.x = -4;
-		full_conf->gun->gun_pos.y = 2;
-	}
-	else if (full_conf->gun->call_count == 7)
-	{
-		full_conf->gun->gun_pos.x = -8;
-		full_conf->gun->gun_pos.y = 4;
-	}
-	else if (full_conf->gun->call_count == 8)
-	{
-		full_conf->gun->gun_pos.x = 0;
-		full_conf->gun->gun_pos.y = 0;
-		full_conf->gun->call_count = -1;
-	}
-	full_conf->gun->call_count++;
-}
-
 void	gun_animation(t_full_conf *full_conf)
 {
-	if (full_conf->gun->call_count == 0 || full_conf->gun->call_count == 4)
-	{
-		full_conf->gun->gun_pos.x = 0;
-		full_conf->gun->gun_pos.y = 0;
-	}
-	else if (full_conf->gun->call_count == 1 || full_conf->gun->call_count == 3)
-	{
-		full_conf->gun->gun_pos.x = 4;
-		full_conf->gun->gun_pos.y = 2;
-	}
-	else if (full_conf->gun->call_count == 2)
-	{
-		full_conf->gun->gun_pos.x = 8;
-		full_conf->gun->gun_pos.y = 4;
-	}
-	gun_animation_two(full_conf);
+	full_conf->gun->gun_pos.x = full_conf->gun->call_count * 2;
+	full_conf->gun->gun_pos.y = (pow(full_conf->gun->call_count, 2) * 0.5) - 40;
+	if (full_conf->gun->call_count < 1)
+		full_conf->gun->gun_pos.y * -1;
+	if (full_conf->gun->direction == 1)
+		full_conf->gun->call_count++;
+	else
+		full_conf->gun->call_count--;
+	if (full_conf->gun->call_count <= -10)
+		full_conf->gun->direction = 1;
+	else if (full_conf->gun->call_count >= 10)
+		full_conf->gun->direction = 0;
 }
 
 int		gun(t_full_conf *full_conf, int animation)

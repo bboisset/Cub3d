@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:56:55 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/08 19:13:59 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/10 21:47:22 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int		wall_distance(t_raycast *param, t_display *camera, t_map_config *config)
 
 void	define_draw(t_raycast *param, t_display *camera, t_map_config *config)
 {
+	//param->shadow_intensity = 
+	//printf("perpwall dist %f\n",param->perp_wall_dist);
 	param->line_height = (int)(config->res.y / param->perp_wall_dist);
 	param->draw.draw_start = -param->line_height / 2 + config->res.y
 		/ 2;

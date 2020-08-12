@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:48:51 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/08 19:13:42 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/11 14:11:52 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void		draw_texture(int x, int tex_x, t_full_conf *full_conf,
 		y++;
 	}
 }
-
+//to apply shadow divide value by /2 /3 /4 thank to perpwal dist
 void		fill_img(int x, int y, int color, t_img_data *img)
 {
 	int index;

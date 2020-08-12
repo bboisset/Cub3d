@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:38:28 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/05 18:20:01 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/11 14:01:54 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int			init_gun(t_full_conf *full_conf)
 		return (-3);
 	}
 	full_conf->gun->gun_pos = init_dimensions();
-	full_conf->gun->call_count = 0;
+	full_conf->gun->call_count = -10;
+	full_conf->gun->direction = 1;
 	full_conf->gun->ammo = 64;
 	return (0);
 }

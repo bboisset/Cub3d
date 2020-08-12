@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:35:30 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/06 15:17:09 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/12 13:17:34 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	free_config(t_map_config *config, t_data *data)
 	if (config->step > 1)
 	{
 		if (config->step > 2)
-			while (i < config->map_w.x)
+			while (i < config->map_w.y)
 				free(config->map[i++]);
 		free(config->map);
 		if (config->step > 3)

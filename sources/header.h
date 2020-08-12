@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/08 19:13:55 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/12 13:21:28 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 # define TEXT_H 64
 # define SPRITE_H 100
 # define SPRITE_W 100
-# define MOVESPEED 0.18
+# define MOVESPEED 0.1
 # define MOVESPEEDSEC 0.36
-# define ROT_SPEED 0.12
+# define WALL_DIST 1
+# define ROT_SPEED 0.08
 # define SCREEN_MAX_W 2560
 # define SCREEN_MAX_H 1440
 # define SCALE_SPRITE 1
@@ -62,12 +63,17 @@ typedef struct				s_active_action
 {
 	int						up_active;
 	int						down_active;
+	int						right_active;
+	int						left_active;
+	int						arrow_l_active;
+	int						arrow_r_active;
 }							t_active_action;
 
 typedef struct				s_gun
 {
 	int						ammo;
 	int						call_count;
+	int						direction;
 	t_dimension				gun_pos;
 	t_img_data				*img;
 }							t_gun;
@@ -189,6 +195,7 @@ typedef struct				s_raycast
 	int						map_x;
 	int						map_y;
 	int						line_height;
+	int						shadow_intensity;
 	double					camera_x;
 	double					side_dist_x;
 	double					side_dist_y;
@@ -239,8 +246,7 @@ void						handle_go_right(t_full_conf *full_conf);
 void						handle_cam_right(t_full_conf *full_conf);
 void						handle_cam_left(t_full_conf *full_conf);
 
-void						reload_scene(t_full_conf *full_conf,
-	int gun_anim);
+int							reload_scene(t_full_conf *full_conf);
 
 int							key_press(int keycode,
 	t_full_conf *full_conf);
@@ -299,8 +305,6 @@ int							full_error_d(t_full_conf *full_conf,
 int							full_error(t_map_config *config, t_data *data,
 	t_display *display, int code);
 
-int							temp_map_switcher_error(char **map, int i,
-	char **ptr_temp_map);
 int							map_error(t_map_config	*config, int code);
 int							cam_mall_err(t_map_config *config,
 	t_data*data, int code);

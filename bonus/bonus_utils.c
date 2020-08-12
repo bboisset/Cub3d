@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:38:37 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/03 22:20:00 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/12 13:13:10 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ void	sprite_in_front(t_full_conf *full_conf, t_sprite_list *temp_sprt)
 	{
 		play_sound("./ressources/sounds/barrel_explosion.mp3", 1, full_conf);
 	}
-	reload_scene(full_conf, 0);
+	//reload_scene(full_conf);
 }

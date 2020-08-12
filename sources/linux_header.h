@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/06 15:03:11 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/12 13:21:32 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -298,8 +298,6 @@ int							full_error_d(t_full_conf *full_conf,
 int							full_error(t_map_config *config, t_data *data,
 	t_display *display, int code);
 
-int							temp_map_switcher_error(char **map, int i,
-	char **ptr_temp_map);
 int							map_error(t_map_config	*config, int code);
 int							cam_mall_err(t_map_config *config,
 	t_data*data, int code);

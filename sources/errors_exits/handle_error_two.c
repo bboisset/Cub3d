@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:36:01 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/06 15:21:24 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/12 13:21:35 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,6 @@ int	map_error(t_map_config *config, int code)
 		code = config->config_error != 0 ? config->config_error : 1;
 	free_config(config, NULL);
 	code_error(code);
-	return (-1);
-}
-
-int	temp_map_switcher_error(char **map, int i, char **ptr_temp_map)
-{
-	int j;
-
-	j = 0;
-	while (j < i - 1)
-		free(map[j++]);
-	free(map);
-	free(ptr_temp_map);
 	return (-1);
 }
 

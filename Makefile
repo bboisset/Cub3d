@@ -51,7 +51,7 @@ $(NAME) : $(OBJSRCS) $(OBJSRCSBONUS)
 	@echo "\033[32m[Compile Libft...]"
 	@$(MAKE) -C $(LIBFT)
 	@echo "\033[32m[Compile Cub3D...]"
-	@gcc  $(OBJSRCSBONUS) $(OBJSRCS) -I./sources/header.h -I./usr/include -Wall -Wextra -Werror $(MLX) $(LIBFT)/libft.a -o $(NAME)
+	@gcc  -fsanitize=address $(OBJSRCSBONUS) $(OBJSRCS) -I./sources/header.h -I./usr/include -Wall -Wextra -Werror $(MLX) $(LIBFT)/libft.a -o $(NAME)
 	@echo "\033[32m[Success !]"
 
 all : $(NAME)
