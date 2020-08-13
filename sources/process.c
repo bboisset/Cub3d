@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 14:56:59 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/12 17:50:36 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/12 18:07:21 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	first_launch_end(t_full_conf *full_conf)
 {
-	//game_loop(full_conf);
 	if (full_conf->config->small_res == 0)
 		if (mimimap(full_conf) < 0)
 			return (-1);
@@ -28,8 +27,6 @@ static int	first_launch_end(t_full_conf *full_conf)
 	}
 	else
 	{
-		/*if (full_conf->config->small_res == 0)
-			gun(full_conf, 0);*/
 		mlx_hook(full_conf->data->mlx_win, 2, 1L << 0, key_press, full_conf);
 		mlx_hook(full_conf->data->mlx_win, 3, 1L << 1, key_realease, full_conf);
 		mlx_hook(full_conf->data->mlx_win, 17, 1l << 17,
@@ -88,9 +85,3 @@ void		game_loop(t_full_conf *full_conf)
 	}
 	full_conf->data->loop_count++;
 }
-/*
-mlx_destroy_image(full_conf->data->mlx_ptr, full_conf->data->mlx_img);
-	full_conf->daat->mlx_img = mlx_new_image(full_conf->data->mlx_ptr,
-		full_conf->config->res.x, full_conf->config->res.y);
-	reload_scene(full_conf, 1);
-*/

@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:45 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/05 02:08:55 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/12 18:08:40 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	load_xpm(char *path, t_map_config *config, t_data *data,
 	if (!img_ptr)
 		return (-3);
 	*texture = load_textures_struct(img_ptr, config);
-	if (!*texture)
+	if (!texture)
 		return (-3);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:49 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/08 18:09:56 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/13 11:09:40 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ static t_active_action	init_active_key(void)
 
 	pressed_key.down_active = 0;
 	pressed_key.up_active = 0;
+	pressed_key.right_active = 0;
+	pressed_key.left_active = 0;
+	pressed_key.arrow_l_active = 0;
+	pressed_key.arrow_r_active = 0;
 	return (pressed_key);
 }
 

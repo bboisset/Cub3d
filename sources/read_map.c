@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:57:42 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/11 19:39:04 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/13 12:32:27 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,9 @@ int			read_map(char *str, t_map_config *config)
 	config->map_w.y = ft_lstsize(config->temp_map);
 	if (!(config->map = malloc(sizeof(char*) * config->map_w.y)))
 		return (-1);
-	config->step++;
+	config->step++;//1
 	if ((create_map(config) == -1))
 		return (-1);
-	config->step++;
-	config->step++;
+	config->step++;//2
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:54:31 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/12 12:44:48 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/13 12:35:22 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ void	handle_move(t_full_conf *full_conf)
 		handle_cam_right(full_conf);
 	if (full_conf->key.arrow_l_active == 1)
 		handle_cam_left(full_conf);
+	
+	if (fmod(full_conf->camera->pos.y, 1) == 0)
+		full_conf->camera->pos.y += 0.01;
+	if (fmod(full_conf->camera->pos.x, 1) == 0)
+		full_conf->camera->pos.x += 0.01;
 }
 
 int		is_moving(t_full_conf *full_conf)
