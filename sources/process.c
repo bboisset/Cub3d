@@ -6,11 +6,33 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 14:56:59 by bboisset          #+#    #+#             */
-/*   Updated: 2020/08/12 18:07:21 by bboisset         ###   ########.fr       */
+/*   Updated: 2022/07/03 18:25:07 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+static int	save_game_first_image(t_full_conf *full_conf)
+{
+	int	res;
+
+	game_loop(full_conf);
+	res = create_bitmap(full_conf->config, full_conf->data->data);
+	if (res < 0)
+		code_error(11);
+	handle_exit(full_conf);
+	return (0);
+}
+
+static void	launch_game(t_full_conf *full_conf)
+{
+	mlx_hook(full_conf->data->mlx_win, 2, 1L << 0, key_press, full_conf);
+	mlx_hook(full_conf->data->mlx_win, 3, 1L << 1, key_realease, full_conf);
+	mlx_hook(full_conf->data->mlx_win, 17, 1l << 17,
+		handle_exit, full_conf);
+	mlx_loop_hook(full_conf->data->mlx_ptr, reload_scene, full_conf);
+	mlx_loop(full_conf->data->mlx_ptr);
+}
 
 static int	first_launch_end(t_full_conf *full_conf)
 {
@@ -18,22 +40,9 @@ static int	first_launch_end(t_full_conf *full_conf)
 		if (mimimap(full_conf) < 0)
 			return (-1);
 	if (full_conf->config->save_img == 1)
-	{
-		game_loop(full_conf);
-		if ((create_bitmap(full_conf->config, full_conf->data->data) < 0))
-			code_error(11);
-		handle_exit(full_conf);
-		return (0);
-	}
+		return (save_game_first_image(full_conf));
 	else
-	{
-		mlx_hook(full_conf->data->mlx_win, 2, 1L << 0, key_press, full_conf);
-		mlx_hook(full_conf->data->mlx_win, 3, 1L << 1, key_realease, full_conf);
-		mlx_hook(full_conf->data->mlx_win, 17, 1l << 17,
-			handle_exit, full_conf);
-		mlx_loop_hook(full_conf->data->mlx_ptr, reload_scene, full_conf);
-		mlx_loop(full_conf->data->mlx_ptr);
-	}
+		launch_game(full_conf);
 	return (0);
 }
 

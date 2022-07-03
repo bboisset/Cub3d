@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:53:28 by baptisteb         #+#    #+#             */
-/*   Updated: 2020/08/12 13:21:28 by bboisset         ###   ########.fr       */
+/*   Updated: 2020/08/13 13:04:43 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -327,7 +327,7 @@ void						fire(t_full_conf *full_conf);
 
 void						enable_minimap(t_full_conf *full_conf);
 
-void						free_config(t_map_config *confi, t_data *data);
+void						free_config(t_map_config *config, t_data *data);
 
 int							check_map_wall(t_map_config *config);
 
